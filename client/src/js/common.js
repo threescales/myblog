@@ -1,3 +1,0 @@
-var styleInit = function(){
-	
-};
