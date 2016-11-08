@@ -1,0 +1,57 @@
+var express = require('express');
+var path = require('path');
+
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var errorHandler = require('errorhandler');
+
+var app = express();
+
+// 设置80端口
+app.set('port', process.env.PORT || 80);
+
+//一些中间件
+app.use(logger('dev'));
+app.use(methodOverride());
+app.use(session({
+	resave : true,
+	saveUninitialized : true,
+	secret : 'uwotm8'
+}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended : true
+}));
+app.use(express.static(path.join(__dirname, './client/dist')));
+var storage = multer.diskStorage({
+	destination : function(req, file, cb) {
+		cb(null, './client/src/img/material');
+	},
+	filename : function(req, file, cb) {
+		cb(null, file.originalname);
+	}
+});
+var upload = multer({
+	storage : storage
+});
+var cpUpload = upload.any();
+app.use(cpUpload);
+
+
+
+// development only
+if ('development' == app.get('env')) {
+	app.use(errorHandler());
+}
+
+//api
+var api = require('./server/api/api');
+app.get('/api/article/addArticle',api.articleApi.addArticle);
+
+app.listen(app.get('port'), function() {
+	console.log('Express server listening on port ' + app.get('port'));
+});
