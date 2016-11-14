@@ -1,8 +1,11 @@
 import React from 'react';
-
+import Header from '../publicComponents/header.jsx'
 class ContentList extends React.Component{
 	render(){
+		var header =  <Header />;
 		return(
+			<div>
+			{header}
 			<article className="mod-archive">
 			<div className="mod-archive__item">
 				<div id="2015" className="mod-archive__year">2016</div>
@@ -30,6 +33,7 @@ class ContentList extends React.Component{
 				</ul>
 			</div>
 		</article>
+		</div>
 		)
 	}
 }

@@ -16,7 +16,7 @@ var deps = [
 var config = {
     //配置入口
     entry:{
-        list:'./src/js/entry/list.js',//入口1
+        index:'./src/js/entry/index.js',//入口1
 //        entryTwo:'./src/js/detail.js',//入口2
         vendors:['react','react-router']//抽成公用的可以减少重复打包，当你是多个入库页面时就能体会到其作用
     },
@@ -62,9 +62,9 @@ var config = {
         }),
         //将html打包压缩
         new HtmlWebpackPlugin({
-            filename:'/page/list.html',//生成的html存放路径，相对于 path
-            template:'./src/page/list.html', //html模板路径
-            chunks:['vendors','list'],//区分你想要加载的js，名字要跟entry入口定义的保存一直
+            filename:'/page/index.html',//生成的html存放路径，相对于 path
+            template:'./src/page/index.html', //html模板路径
+            chunks:['vendors','index'],//区分你想要加载的js，名字要跟entry入口定义的保存一直
             inject:true, //允许插件修改哪些内容，包括head与body
             hash:true,//为静态资源生成hash值，可以实现缓存
             minify:{

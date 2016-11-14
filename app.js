@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended : true
 }));
-app.use(express.static(path.join(__dirname, './client/dist')));
+app.use(express.static('client/dist'));
 var storage = multer.diskStorage({
 	destination : function(req, file, cb) {
 		cb(null, './client/src/img/material');
@@ -50,7 +50,11 @@ if ('development' == app.get('env')) {
 
 //api
 var api = require('./server/api/api');
-app.get('/api/article/addArticle',api.articleApi.addArticle);
+
+//文章相关
+app.post('/api/article/addArticle',api.articleApi.addArticle);
+app.post('/api/article/getArticles',api.articleApi.getArticles);
+app.post('/api/article/getArticleDetail',api.articleApi.getArticleDetail);
 
 app.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));

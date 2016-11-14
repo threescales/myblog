@@ -1,5 +1,5 @@
 import React from 'react';
-import touxiang from '../../img/touxiang.jpg'
+import touxiang from '../../img/touxiang.jpg';
 
 class Header extends React.Component{
 	render(){

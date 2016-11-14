@@ -1,23 +1,51 @@
-var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost:27017/myblog');
 var models = require('../models/models');
+var Promise = require('bluebird');
 var ArticleModel = models.ArticleModel;
 
 var articleService = {
-	addArticle: function () {
-		var blog = { title: 'aaaaa', author: 'zhangyouming', body: '<p>asdasdad</p>', classification: '1', hidden: false, meta: { votes: 0, likes: 0 } };
-		var articleEntity = new ArticleModel(blog);
-		console.log(articleEntity);
-		articleEntity.save(function (err) {  //存储
-			if (err) {
-				console.log('save failed');
-			}
-			console.log('save success');
+	//添加博客
+	addArticle: function (article) {
+		return new Promise(function(resolve,reject){
+			var articleEntity = new ArticleModel(article);			
+			articleEntity.save(function (error) {  //存储
+				if (error) {
+					reject(error);
+				}else{
+					resolve({success:true});
+				}		
+			});
 		});
+		
 	},
-	getArticleList: function () {
-
+	//查询博客列表
+	getArticles: function (articletype) {
+		return new Promise(function(resolve,reject){
+			var articleEntity = new ArticleModel({});	
+			articleEntity.findArticleByArticletype(articletype,function(error,docs){
+				if (error) {
+					reject(error);
+				}else{
+					console.log('查询博客列表成功'+docs);
+					resolve(docs);
+				}
+			});
+		});				
+	},
+	//查询文章详情
+	getArticleDetail: function(_id,res){
+		return new Promise(function(resolve,reject){
+			var articleEntity = new ArticleModel({});
+			articleEntity.findArticleById(_id,function(error,docs){
+				if (error) {
+					reject(error);
+				}else{
+					console.log('查询博客详情成功'+docs);
+					resolve(docs);
+				}
+			});
+		});
+		
 	}
-}
+};
 
 module.exports = articleService;
