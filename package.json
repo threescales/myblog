@@ -22,7 +22,7 @@
   ],
   "author": "zhangyouming",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
