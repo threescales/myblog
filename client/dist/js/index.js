@@ -18,7 +18,7 @@ webpackJsonp([0],[
 
 	var _routerIndex2 = _interopRequireDefault(_routerIndex);
 
-	__webpack_require__(236);
+	__webpack_require__(234);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17298,17 +17298,17 @@ webpackJsonp([0],[
 	                    { className: 'nav' },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '/page/index.html#/articles?type=1' },
+	                        { href: '/page/index.html#/articles/1' },
 	                        '\u524D\u7AEF'
 	                    ),
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '/page/index.html#/articles?type=2' },
+	                        { href: '/page/index.html#/articles/2' },
 	                        '\u540E\u7AEF'
 	                    ),
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '/page/index.html#/articles?type=3' },
+	                        { href: '/page/index.html#/articles/3' },
 	                        '\u968F\u7B14'
 	                    ),
 	                    _react2.default.createElement(
@@ -17632,14 +17632,6 @@ webpackJsonp([0],[
 
 	var _touxiang2 = _interopRequireDefault(_touxiang);
 
-	var _v228094475660a08dc5b3dcf1836628b10_b = __webpack_require__(234);
-
-	var _v228094475660a08dc5b3dcf1836628b10_b2 = _interopRequireDefault(_v228094475660a08dc5b3dcf1836628b10_b);
-
-	var _v2Aa42b5b1cdcc192afe68fecc603127ad_b = __webpack_require__(235);
-
-	var _v2Aa42b5b1cdcc192afe68fecc603127ad_b2 = _interopRequireDefault(_v2Aa42b5b1cdcc192afe68fecc603127ad_b);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -17658,16 +17650,17 @@ webpackJsonp([0],[
 
 			_this.state = {
 				article: {},
-				loadingData: false
+				loadingArticle: false,
+				comments: [],
+				loadingComment: false
 			};
 			return _this;
 		}
 
 		_createClass(ContentDetail, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
 				var articleId = this.props.params.articleId;
-				console.log(articleId);
 				//赋值this指向
 				var that = this;
 				if (self.fetch) {
@@ -17682,10 +17675,33 @@ webpackJsonp([0],[
 						//处理json数据
 						response.json().then(function (data) {
 							if (data.success) {
+								_comment2.default.article = data.datas;
 								//修改状态
 								that.setState({
 									article: data.datas,
-									loadingData: true
+									loadingArticle: true
+								});
+							} else {
+								//后台报错处理逻辑
+							}
+						});
+					});
+
+					// 使用 fetch 框架查询文章详情
+					fetch("/api/comment/getComments", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded"
+						},
+						body: "articleId=" + articleId
+					}).then(function (response) {
+						//处理json数据
+						response.json().then(function (data) {
+							if (data.success) {
+								//修改状态
+								that.setState({
+									comments: data.datas,
+									loadingComment: true
 								});
 							} else {
 								//后台报错处理逻辑
@@ -17701,8 +17717,9 @@ webpackJsonp([0],[
 			key: 'render',
 			value: function render() {
 				var header = _react2.default.createElement(_header2.default, null);
-				var comment = _react2.default.createElement(_comment2.default, null);
 				var article = this.state.article;
+				var comment = _react2.default.createElement(_comment2.default, null);
+
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -17721,7 +17738,70 @@ webpackJsonp([0],[
 						),
 						_react2.default.createElement('div', { className: 'mod-post__entry wzulli', dangerouslySetInnerHTML: { __html: article.body } })
 					),
-					comment
+					_react2.default.createElement(
+						'section',
+						{ className: 'mod-comment' },
+						_react2.default.createElement(
+							'h3',
+							{ className: 'comments' },
+							this.props.title
+						),
+						_react2.default.createElement(
+							'ol',
+							{ className: 'commentlist' },
+							this.state.loadingComment ? this.state.comments.map(function (result) {
+								return _react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'div',
+										{ className: 'comment-body' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'comment-author' },
+											_react2.default.createElement('img', { className: 'avatar', src: _touxiang2.default }),
+											_react2.default.createElement(
+												'cite',
+												{ className: 'fn' },
+												result.userName
+											),
+											_react2.default.createElement(
+												'span',
+												{ className: 'says' },
+												'\u8BF4\u9053\uFF1A'
+											)
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'commentmetadata' },
+											_react2.default.createElement(
+												'a',
+												{ href: '#' },
+												result.createDate
+											)
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											result.content
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'reply' },
+											_react2.default.createElement(
+												'a',
+												null,
+												'\u56DE\u590D'
+											)
+										)
+									)
+								);
+							}) : ''
+						),
+						comment
+					),
+					_react2.default.createElement('input', { type: 'hidden', id: 'articleId', value: article._id })
 				);
 			}
 		}]);
@@ -17762,237 +17842,79 @@ webpackJsonp([0],[
 	var Comment = function (_React$Component) {
 		_inherits(Comment, _React$Component);
 
-		function Comment() {
+		function Comment(props) {
 			_classCallCheck(this, Comment);
 
-			return _possibleConstructorReturn(this, (Comment.__proto__ || Object.getPrototypeOf(Comment)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Comment.__proto__ || Object.getPrototypeOf(Comment)).call(this, props));
 		}
 
 		_createClass(Comment, [{
+			key: 'submitComment',
+			value: function submitComment() {
+				var userName = document.getElementById("userName").value;
+				var email = document.getElementById("email").value;
+				var content = document.getElementById("commentContent").value;
+				var articleId = document.getElementById("articleId").value;
+				fetch("/api/comment/addComment", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded"
+					},
+					body: "articleId=" + articleId + "&userName=" + userName + "&content=" + content + "&forOtherFlag=0&toUserName=0&toCommentId=0"
+				}).then(function (response) {
+					//处理json数据
+					response.json().then(function (data) {
+						if (data.success) {
+							alert("评论成功");
+						} else {
+							//后台报错处理逻辑
+						}
+					});
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
-					'section',
-					{ className: 'mod-comment' },
+					'div',
+					{ className: 'comment-respond' },
 					_react2.default.createElement(
 						'h3',
-						{ className: 'comments' },
-						'\u6708\u5165\u5341\u4E07 \u96BE\u5417'
+						null,
+						'\u53D1\u8868\u8BC4\u8BBA'
 					),
 					_react2.default.createElement(
-						'ol',
-						{ className: 'commentlist' },
+						'form',
+						null,
 						_react2.default.createElement(
-							'li',
-							null,
-							_react2.default.createElement(
-								'div',
-								{ className: 'comment-body' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'comment-author' },
-									_react2.default.createElement('img', { className: 'avatar', src: _touxiang2.default }),
-									_react2.default.createElement(
-										'cite',
-										{ className: 'fn' },
-										'\u554A\u554A\u554A\u554A\u554A'
-									),
-									_react2.default.createElement(
-										'span',
-										{ className: 'says' },
-										'\u8BF4\u9053\uFF1A'
-									)
-								),
-								_react2.default.createElement(
-									'em',
-									null,
-									'\u60A8\u7684\u8BC4\u8BBA\u6B63\u5728\u5BA1\u6838'
-								),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(
-									'div',
-									{ className: 'commentmetadata' },
-									_react2.default.createElement(
-										'a',
-										{ href: '#' },
-										'2016.11.04 11:56'
-									)
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'\u8FD9\u4E2A\u7F51\u7AD9\u505A\u7684\u4E0D\u9519'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'reply' },
-									_react2.default.createElement(
-										'a',
-										null,
-										'\u56DE\u590D'
-									)
-								)
-							),
-							_react2.default.createElement(
-								'ul',
-								{ className: 'children' },
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'div',
-										{ className: 'comment-body' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'comment-author' },
-											_react2.default.createElement('img', { className: 'avatar', src: _touxiang2.default }),
-											_react2.default.createElement(
-												'cite',
-												{ className: 'fn' },
-												'\u554A\u554A\u554A\u554A\u554A'
-											),
-											_react2.default.createElement(
-												'span',
-												{ className: 'says' },
-												'\u8BF4\u9053\uFF1A'
-											)
-										),
-										_react2.default.createElement(
-											'em',
-											null,
-											'\u60A8\u7684\u8BC4\u8BBA\u6B63\u5728\u5BA1\u6838'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'div',
-											{ className: 'commentmetadata' },
-											_react2.default.createElement(
-												'a',
-												{ href: '#' },
-												'2016.11.04 11:56'
-											)
-										),
-										_react2.default.createElement(
-											'p',
-											null,
-											'\u8FD9\u4E2A\u7F51\u7AD9\u505A\u7684\u4E0D\u9519'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'reply' },
-											_react2.default.createElement(
-												'a',
-												null,
-												'\u56DE\u590D'
-											)
-										)
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'div',
-										{ className: 'comment-body' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'comment-author' },
-											_react2.default.createElement('img', { className: 'avatar', src: _touxiang2.default }),
-											_react2.default.createElement(
-												'cite',
-												{ className: 'fn' },
-												'\u554A\u554A\u554A\u554A\u554A'
-											),
-											_react2.default.createElement(
-												'span',
-												{ className: 'says' },
-												'\u8BF4\u9053\uFF1A'
-											)
-										),
-										_react2.default.createElement(
-											'em',
-											null,
-											'\u60A8\u7684\u8BC4\u8BBA\u6B63\u5728\u5BA1\u6838'
-										),
-										_react2.default.createElement('br', null),
-										_react2.default.createElement(
-											'div',
-											{ className: 'commentmetadata' },
-											_react2.default.createElement(
-												'a',
-												{ href: '#' },
-												'2016.11.04 11:56'
-											)
-										),
-										_react2.default.createElement(
-											'p',
-											null,
-											'\u8FD9\u4E2A\u7F51\u7AD9\u505A\u7684\u4E0D\u9519'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'reply' },
-											_react2.default.createElement(
-												'a',
-												null,
-												'\u56DE\u590D'
-											)
-										)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'comment-respond' },
-						_react2.default.createElement(
-							'h3',
-							null,
-							'\u53D1\u8868\u8BC4\u8BBA',
-							_react2.default.createElement(
-								'small',
-								null,
-								_react2.default.createElement(
-									'a',
-									null,
-									'\u53D6\u6D88\u56DE\u590D'
-								)
-							)
+							'p',
+							{ className: 'comment-form-comment' },
+							_react2.default.createElement('textarea', { cols: '45', rows: '8', maxlength: '65525', id: 'commentContent' })
 						),
 						_react2.default.createElement(
-							'form',
-							null,
+							'p',
+							{ className: 'comment-form-author' },
 							_react2.default.createElement(
-								'p',
-								{ className: 'comment-form-comment' },
-								_react2.default.createElement('textarea', { cols: '45', rows: '8', maxlength: '65525' })
+								'label',
+								null,
+								'\u60A8\u7684\u59D3\u540D'
 							),
+							_react2.default.createElement('input', { type: 'text', size: '30', maxlength: '245', id: 'userName' })
+						),
+						_react2.default.createElement(
+							'p',
+							{ className: 'comment-form-email' },
 							_react2.default.createElement(
-								'p',
-								{ className: 'comment-form-author' },
-								_react2.default.createElement(
-									'label',
-									null,
-									'\u60A8\u7684\u59D3\u540D'
-								),
-								_react2.default.createElement('input', { type: 'text', size: '30', maxlength: '245' })
+								'label',
+								null,
+								'\u7535\u5B50\u90AE\u4EF6'
 							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'comment-form-email' },
-								_react2.default.createElement(
-									'label',
-									null,
-									'\u7535\u5B50\u90AE\u4EF6'
-								),
-								_react2.default.createElement('input', { type: 'text', size: '30', maxlength: '100' })
-							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'form-submit' },
-								_react2.default.createElement('input', { type: 'submit', className: 'submit', value: '\u53D1\u8868\u8BC4\u8BBA' })
-							)
+							_react2.default.createElement('input', { type: 'text', size: '30', maxlength: '100', id: 'email' })
+						),
+						_react2.default.createElement(
+							'p',
+							{ className: 'form-submit' },
+							_react2.default.createElement('input', { type: 'button', className: 'submit', value: '\u53D1\u8868\u8BC4\u8BBA', onClick: this.submitComment.bind(this) })
 						)
 					)
 				);
@@ -18006,18 +17928,6 @@ webpackJsonp([0],[
 
 /***/ },
 /* 234 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "image/7ef88b02c23c8efbf67bfdc02ee02a13.png";
-
-/***/ },
-/* 235 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "image/c477e8ee743a1e60f9a9e921e3b674c2.png";
-
-/***/ },
-/* 236 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

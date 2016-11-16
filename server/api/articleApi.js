@@ -31,7 +31,7 @@ var articleApi = {
 		});		
 	},
 	getArticles:function(req, res){
-		var articletype = 1;
+		var articletype = req.body.articletype;
 		var data = {};
 		articleService.getArticles(articletype).then(function(result){
 			if(result){

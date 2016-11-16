@@ -62,7 +62,7 @@ var config = {
         }),
         //将html打包压缩
         new HtmlWebpackPlugin({
-            filename:'/page/index.html',//生成的html存放路径，相对于 path
+            filename:'page/index.html',//生成的html存放路径，相对于 path
             template:'./src/page/index.html', //html模板路径
             chunks:['vendors','index'],//区分你想要加载的js，名字要跟entry入口定义的保存一直
             inject:true, //允许插件修改哪些内容，包括head与body

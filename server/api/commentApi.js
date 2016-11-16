@@ -1,4 +1,5 @@
 var commentService = require('../service/commentService');
+var moment = require('moment');
 
 var commentApi = {
 	addComment: function(req,res){
@@ -6,7 +7,7 @@ var commentApi = {
 		comment.articleId = req.body.articleId;
 		comment.userName = req.body.userName;
 		comment.content = req.body.content;
-		comment.createDate = new Date();
+		comment.createDate = moment().format("YYYY-MM-DD hh:mm:ss");
 		comment.forOtherFlag = req.body.forOherFlag;
 		comment.toUserName = req.body.toUserName;
 		comment.toCommentId = req.body.toCommentId;
@@ -26,9 +27,10 @@ var commentApi = {
 			res.send(data);	
 		});
 	},
-	getComments:function(req,res){
+	getComments: function(req,res){
 		var articleId = req.body.articleId;
 		var data = {};
+		console.log(commentService.getComments);
 		commentService.getComments(articleId).then(function(result){
 			if(result){
 				data.success = true;
@@ -38,6 +40,7 @@ var commentApi = {
 				data.success = false;
 				data.message = '暂无评论';
 			}
+			res.send(data);
 		},function(error){
 			data.success = false;
 			data.message = error;
