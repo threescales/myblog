@@ -17216,10 +17216,10 @@ webpackJsonp([0],[
 			path: '/',
 			indexRoute: { component: __webpack_require__(227).default }
 		}, {
-			path: 'articles',
+			path: 'articles/:articleType',
 			component: __webpack_require__(230).default
 		}, {
-			path: 'article',
+			path: 'article/:articleId',
 			component: __webpack_require__(232).default
 		}]
 	};
@@ -17298,22 +17298,22 @@ webpackJsonp([0],[
 	                    { className: 'nav' },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '#' },
+	                        { href: '/page/index.html#/articles?type=1' },
 	                        '\u524D\u7AEF'
 	                    ),
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '#' },
+	                        { href: '/page/index.html#/articles?type=2' },
 	                        '\u540E\u7AEF'
 	                    ),
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '#' },
+	                        { href: '/page/index.html#/articles?type=3' },
 	                        '\u968F\u7B14'
 	                    ),
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '#' },
+	                        { href: '/page/index.html' },
 	                        '\u6863\u6848'
 	                    )
 	                )
@@ -17369,16 +17369,56 @@ webpackJsonp([0],[
 	var ContentList = function (_React$Component) {
 		_inherits(ContentList, _React$Component);
 
-		function ContentList() {
+		function ContentList(props) {
 			_classCallCheck(this, ContentList);
 
-			return _possibleConstructorReturn(this, (ContentList.__proto__ || Object.getPrototypeOf(ContentList)).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, (ContentList.__proto__ || Object.getPrototypeOf(ContentList)).call(this, props));
+
+			_this.state = {
+				articles: [],
+				loadingData: false
+			};
+			return _this;
 		}
 
 		_createClass(ContentList, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var articleType = this.props.params.articleType;
+				//赋值this指向
+				var that = this;
+				if (self.fetch) {
+					// 使用 fetch 框架查询文章列表
+					fetch("/api/article/getArticles", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded"
+						},
+						body: "articletype=" + articleType
+					}).then(function (response) {
+						//处理json数据
+						response.json().then(function (data) {
+							if (data.success) {
+								//修改状态
+								that.setState({
+									articles: data.datas,
+									loadingData: true
+								});
+							} else {
+								//后台报错处理逻辑
+							}
+						});
+					});
+				} else {
+					// 不支持fetch框架处理逻辑
+					console.log('chrome or firefox is better for you');
+				}
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var header = _react2.default.createElement(_header2.default, null);
+
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -17397,82 +17437,27 @@ webpackJsonp([0],[
 							_react2.default.createElement(
 								'ul',
 								{ className: 'mod-archive__list' },
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'time',
-										{ className: 'mod-archive__time' },
-										'2016-10-30'
-									),
-									_react2.default.createElement(
-										'span',
+								this.state.loadingData ? this.state.articles.map(function (result) {
+									return _react2.default.createElement(
+										'li',
 										null,
-										'\u2014'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#' },
-										'\u5982\u4F55\u8BA9\u81EA\u5DF1\u66F4\u6709\u5438\u5F15\u529B\uFF1F'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'time',
-										{ className: 'mod-archive__time' },
-										'2016-10-12'
-									),
-									_react2.default.createElement(
-										'span',
-										null,
-										'\u2014'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#' },
-										'\u4EE5\u4E3A\u653E\u5047\u4E86\u5C31\u6709\u65F6\u95F4\uFF0C\u522B\u81EA\u6B3A\u6B3A\u4EBA\u4E86'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'time',
-										{ className: 'mod-archive__time' },
-										'2016-10-10'
-									),
-									_react2.default.createElement(
-										'span',
-										null,
-										'\u2014'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#' },
-										'\u4F60\u8FDE\u201D\u9AD8\u6548\u5B66\u4E60\u201D\u90FD\u4E0D\u4F1A\uFF0C\u5982\u4F55\u6539\u53D8\u81EA\u5DF1\uFF1F'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'time',
-										{ className: 'mod-archive__time' },
-										'2016-04-10'
-									),
-									_react2.default.createElement(
-										'span',
-										null,
-										'\u2014'
-									),
-									_react2.default.createElement(
-										'a',
-										{ href: '#' },
-										'\u6211\u4E3A\u4EC0\u4E48\u8981\u5F85\u5728\u5927\u57CE\u5E02'
-									)
-								)
+										_react2.default.createElement(
+											'time',
+											{ className: 'mod-archive__time' },
+											result.createdate
+										),
+										_react2.default.createElement(
+											'span',
+											null,
+											'\u2014'
+										),
+										_react2.default.createElement(
+											'a',
+											{ href: "index.html#/article/" + result._id },
+											result.title
+										)
+									);
+								}) : ''
 							)
 						)
 					)
@@ -17666,17 +17651,58 @@ webpackJsonp([0],[
 	var ContentDetail = function (_React$Component) {
 		_inherits(ContentDetail, _React$Component);
 
-		function ContentDetail() {
+		function ContentDetail(props) {
 			_classCallCheck(this, ContentDetail);
 
-			return _possibleConstructorReturn(this, (ContentDetail.__proto__ || Object.getPrototypeOf(ContentDetail)).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, (ContentDetail.__proto__ || Object.getPrototypeOf(ContentDetail)).call(this, props));
+
+			_this.state = {
+				article: {},
+				loadingData: false
+			};
+			return _this;
 		}
 
 		_createClass(ContentDetail, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var articleId = this.props.params.articleId;
+				console.log(articleId);
+				//赋值this指向
+				var that = this;
+				if (self.fetch) {
+					// 使用 fetch 框架查询文章详情
+					fetch("/api/article/getArticleDetail", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded"
+						},
+						body: "articleId=" + articleId
+					}).then(function (response) {
+						//处理json数据
+						response.json().then(function (data) {
+							if (data.success) {
+								//修改状态
+								that.setState({
+									article: data.datas,
+									loadingData: true
+								});
+							} else {
+								//后台报错处理逻辑
+							}
+						});
+					});
+				} else {
+					// 不支持fetch框架处理逻辑
+					console.log('chrome or firefox is better for you');
+				}
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var header = _react2.default.createElement(_header2.default, null);
 				var comment = _react2.default.createElement(_comment2.default, null);
+				var article = this.state.article;
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -17690,45 +17716,10 @@ webpackJsonp([0],[
 							_react2.default.createElement(
 								'h1',
 								{ className: 'mod-post__title' },
-								'\u6708\u5165\u5341\u4E07\uFF0C\u96BE\u5417\uFF1F'
+								article.title
 							)
 						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'mod-post__entry wzulli' },
-							_react2.default.createElement(
-								'p',
-								null,
-								'\u683C\u96F7\u59C6\u7684\u6BB5\u843D\u548C\u53F8\u673A\u7684\u6545\u4E8B\uFF0C\u7B80\u800C\u8A00\u4E4B\uFF0C\u601D\u8DEF\u51B3\u5B9A\u51FA\u8DEF\u3002'
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								'\u201C\u6708\u5165\u5341\u4E07\u201D\u95EE\u6CD5\u7684\u80CC\u540E\uFF0C\u662F\u4E0A\u73ED\u65CF\u601D\u7EF4\u3002\u8FD9\u79CD\u601D\u8DEF\u7684\u5C40\u9650\u6027\uFF0C\u5BFC\u81F4\u5176\u4E00\u78B0\u4E0A\u521B\u4E1A\u642D\u8FB9\u7684\u4E8B\u513F\u5C31\u7EDF\u7EDF\u5931\u7075\u3002'
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								'\u4E0D\u4FE1\uFF0C\u6211\u4EEC\u5C31\u62FF\u5F00\u7F51\u5E97\u8FD9\u79CD\u6700\u63A5\u5730\u6C14\u7684\u521B\u4E1A\u6A21\u5F0F\u6765\u4E3E\u4E2A\u4F8B\u5B50\u3002'
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								'\u5BF9\u5929\u732B\u5973\u88C5\u5E97\u94FA3\u6708\u52309\u6708\u7684\u6570\u636E\u8FDB\u884C\u63D0\u53D6\uFF0C\u6708\u9500\u552E\u989D\u8FC710\u4E07\u7684\u5E97\u94FA\u6570\u636E\u5982\u4E0B\uFF1A'
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								_react2.default.createElement('img', { title: '', alt: 'v2-28094475660a08dc5b3dcf1836628b10_b', src: _v228094475660a08dc5b3dcf1836628b10_b2.default,
-									width: '600', height: '293' })
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								_react2.default.createElement('img', { title: '', alt: 'v2-aa42b5b1cdcc192afe68fecc603127ad_b', src: _v2Aa42b5b1cdcc192afe68fecc603127ad_b2.default,
-									width: '600', height: '293' })
-							)
-						)
+						_react2.default.createElement('div', { className: 'mod-post__entry wzulli', dangerouslySetInnerHTML: { __html: article.body } })
 					),
 					comment
 				);

@@ -10,7 +10,7 @@ var ArticleScheMa = new Schema({
 	author: String,
 	body: String,
 	articletype: String,
-	createdate: {type: Date, defalt: Date.now},
+	createdate: String,
 	hidden:Boolean,
 	meta:{
 		votes: Number,

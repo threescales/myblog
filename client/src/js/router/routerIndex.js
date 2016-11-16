@@ -5,11 +5,11 @@ export default{
 			indexRoute:{component:require('../../components/indexComponents/index.jsx').default}
 		},
 		{
-			path:'articles',
+			path:'articles/:articleType',
            	component:require('../../components/listComponents/contentList.jsx').default
 		},
 		{
-			path:'article',
+			path:'article/:articleId',
            	component:require('../../components/detailComponents/contentDetail.jsx').default
 		}
 	]

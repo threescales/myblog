@@ -1,4 +1,5 @@
 var articleService = require('../service/articleService');
+var moment = require('moment');
 
 var articleApi = {
 	addArticle:function(req, res){
@@ -7,7 +8,7 @@ var articleApi = {
 		article.author = req.body.author;
 		article.body = req.body.body;
 		article.articletype = req.body.articletype;
-		article.createdate = new Date();
+		article.createdate = moment().format("YYYY-MM-DD");
 		article.hidden = false;
 		article.meta = {
 			votes:0,
@@ -30,7 +31,7 @@ var articleApi = {
 		});		
 	},
 	getArticles:function(req, res){
-		var articletype = req.body.articletype;
+		var articletype = 1;
 		var data = {};
 		articleService.getArticles(articletype).then(function(result){
 			if(result){
@@ -49,7 +50,9 @@ var articleApi = {
 		});		
 	},
 	getArticleDetail:function(req,res){
-		var _id = req.body._id;
+		console.log(req.body);
+		var _id = req.body.articleId;
+		console.log(_id);
 		var data = {};
 		articleService.getArticleDetail(_id).then(function(result){			
 			if(result){

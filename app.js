@@ -48,6 +48,10 @@ if ('development' == app.get('env')) {
 	app.use(errorHandler());
 }
 
+app.get('/',function(req,res){
+	res.redirect('/page/index.html');
+});
+
 //api
 var api = require('./server/api/api');
 
