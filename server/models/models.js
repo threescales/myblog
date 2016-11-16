@@ -37,7 +37,7 @@ var CommentScheMa = new Schema({
 	articleId: String,
 	userName: String,
 	content: String,
-	createDate: {type: Date, defalt: Date.now},
+	createDate: String,
 	forOtherFlag:String,
 	toUserName:String,
 	toCommentId:String
