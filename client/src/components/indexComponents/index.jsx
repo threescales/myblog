@@ -15,9 +15,9 @@ class Index extends React.Component{
                     <img src={addressIcon} />中国北京
                 </p>
                 <p className="nav">
-                    <a href="/page/index.html#/articles/1">前端</a>
-                    <a href="/page/index.html#/articles/2">后端</a>
-                    <a href="/page/index.html#/articles/3">随笔</a>
+                    <a href="/page/index.html#/articles?type=1">前端</a>
+                    <a href="/page/index.html#/articles?type=2">后端</a>
+                    <a href="/page/index.html#/articles?type=3">随笔</a>
                     <a href="/page/index.html">档案</a>
                 </p>
             </div>	 

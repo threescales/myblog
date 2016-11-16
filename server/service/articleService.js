@@ -32,7 +32,7 @@ var articleService = {
 		});				
 	},
 	//查询文章详情
-	getArticleDetail: function(_id){
+	getArticleDetail: function(_id,res){
 		return new Promise(function(resolve,reject){
 			var articleEntity = new ArticleModel({});
 			articleEntity.findArticleById(_id,function(error,docs){

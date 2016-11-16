@@ -60,9 +60,6 @@ app.post('/api/article/addArticle',api.articleApi.addArticle);
 app.post('/api/article/getArticles',api.articleApi.getArticles);
 app.post('/api/article/getArticleDetail',api.articleApi.getArticleDetail);
 
-app.post('/api/comment/getComments',api.commentApi.getComments);
-app.post('/api/comment/addComment',api.commentApi.addComment);
-
 app.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });
