@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "input":"cd client",
     "build": "webpack -p --watch",
-    "output":"cd ..",
     "start": "node app.js"
   },
   "repository": {
@@ -49,7 +47,6 @@
 	  "errorhandler": "^1.1.1",
     "express": "^4.14.0",
     "express-session": "^1.11.3",
-    "jade": "^1.11.0",
     "method-override": "^2.1.2",
     "morgan": "^1.6.1",
     "multer": "^1.1.0",

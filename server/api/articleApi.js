@@ -50,7 +50,6 @@ var articleApi = {
 		});		
 	},
 	getArticleDetail:function(req,res){
-		console.log(req.body);
 		var _id = req.body.articleId;
 		console.log(_id);
 		var data = {};
