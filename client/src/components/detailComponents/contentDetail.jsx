@@ -50,7 +50,6 @@ class ContentDetail extends React.Component{
 	getComments(articleId){
 			//赋值this指向
 		let that = this;
-		console.log(that);
 		if(self.fetch) {
 		// 使用 fetch 框架查询文章详情
 			fetch("/api/comment/getComments",{

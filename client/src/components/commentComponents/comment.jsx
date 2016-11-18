@@ -9,8 +9,13 @@ class Comment extends React.Component{
 	submitComment(){
 		let that = this;
 		let userName = document.getElementById("userName").value;
-		let email = document.getElementById("email").value;
+		if(trim(userName)==''){
+			
+		}
 		let content = document.getElementById("commentContent").value;
+		if(trim(content)==''){
+			
+		}
 		let articleId = document.getElementById("articleId").value;
 		fetch("/api/comment/addComment",{
 			method: "POST",
@@ -22,13 +27,19 @@ class Comment extends React.Component{
 				//处理json数据
 				response.json().then(function(data){
 					if(data.success){
-					console.log(that);
+						document.getElementById("userName").value = '';
+						document.getElementById("commentContent").value = '';
+						
 						that.props.parentComponents.getComments(articleId);		
 					}else{
 						//后台报错处理逻辑
 					}
 				});
 			});
+	}
+	
+	trim(s){
+    	return s.replace(/(^\s*)|(\s*$)/g, "");
 	}
 
 	render(){
@@ -46,10 +57,6 @@ class Comment extends React.Component{
 					<p className="comment-form-author">
 						<label>您的姓名</label>
 						<input type="text" size="30" maxlength="245" id="userName" ></input>
-					</p>
-					<p className="comment-form-email">
-						<label>电子邮件</label>
-						<input type="text" size="30" maxlength="100" id="email"/>
 					</p>
 					<p className="form-submit">
 						<input type="button" className="submit" value="发表评论" onClick={this.submitComment.bind(this) }/>
