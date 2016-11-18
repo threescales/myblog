@@ -16,19 +16,19 @@ class Header extends React.Component{
 			<nav className="mod-head__nav">
 				<ul className="mod-head__ul">
 					<li id="menu-item-14" className="menu-item">
-						<a href="#">前端</a>
+						<a href="/page/index.html#/articles/1">前端</a>
 						<span>·</span>
 					</li>
 					<li id="menu-item-15" className="menu-item">
-						<a href="#">后端</a>
+						<a href="/page/index.html#/articles/2">后端</a>
 						<span>·</span>
 					</li>
 					<li id="menu-item-19" className="menu-item">
-						<a href="#">随笔</a>
+						<a href="/page/index.html#/articles/3">随笔</a>
 						<span>·</span>
 					</li>
 					<li id="menu-item-32" className="menu-item">
-						<a href="#">档案</a>
+						<a href="/page/index.html">档案</a>
 						<span>·</span>
 					</li>
 				</ul>

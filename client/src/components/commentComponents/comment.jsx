@@ -2,11 +2,12 @@ import React from 'react';
 import touxiang from '../../img/touxiang.jpg';
 
 class Comment extends React.Component{
-		constructor(props){
+	constructor(props){
 		super(props);
 	}	
 	
 	submitComment(){
+		let that = this;
 		let userName = document.getElementById("userName").value;
 		let email = document.getElementById("email").value;
 		let content = document.getElementById("commentContent").value;
@@ -21,7 +22,8 @@ class Comment extends React.Component{
 				//处理json数据
 				response.json().then(function(data){
 					if(data.success){
-						alert("评论成功");		
+					console.log(that);
+						that.props.parentComponents.getComments(articleId);		
 					}else{
 						//后台报错处理逻辑
 					}

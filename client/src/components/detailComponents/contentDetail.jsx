@@ -14,8 +14,8 @@ class ContentDetail extends React.Component{
 		};
 	}
 
-	componentWillMount(){
-		const articleId = this.props.params.articleId;
+	getArticle(articleId){
+		
 		//赋值this指向
 		let that = this;
 		if(self.fetch) {
@@ -41,7 +41,17 @@ class ContentDetail extends React.Component{
 					}
 				});
 			});
-		
+		}else{
+			// 不支持fetch框架处理逻辑
+			console.log('chrome or firefox is better for you');
+		}
+	}
+
+	getComments(articleId){
+			//赋值this指向
+		let that = this;
+		console.log(that);
+		if(self.fetch) {
 		// 使用 fetch 框架查询文章详情
 			fetch("/api/comment/getComments",{
 				method: "POST",
@@ -69,10 +79,18 @@ class ContentDetail extends React.Component{
 		}
 	}
 
+	componentWillMount(){
+		const articleId = this.props.params.articleId;
+		this.getArticle(articleId);
+		this.getComments(articleId);
+		
+	}
+	
+	
 	render(){
 		var header =  <Header />;
 		var article = this.state.article;
-		var comment = <Comment/>;
+		var comment = <Comment parentComponents={this}/>;
 		
 		return(
 			<div>
@@ -95,7 +113,7 @@ class ContentDetail extends React.Component{
 							<li>
 								<div className="comment-body">
 									<div className="comment-author">
-										<img className="avatar" src={touxiang} />
+										<img className="avatar" src="http://v1.qzone.cc/avatar/201406/23/05/47/53a74f0397252504.jpg%21200x200.jpg" />
 										<cite className="fn">{result.userName}</cite>
 										<span className="says">说道：</span>
 									</div>

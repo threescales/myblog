@@ -52,11 +52,17 @@ var config = {
     plugins:[
         new ExtractTextPlugin("css/css.css"),//生成的css样式文件
         new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.js'),//抽取公用的库或者方法
+        new webpack.optimize.UglifyJsPlugin({
+             compress: {
+                 warnings: false
+            }
+        }),
         new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
+        
         //将html打包压缩
         new HtmlWebpackPlugin({
             filename:'page/index.html',//生成的html存放路径，相对于 path

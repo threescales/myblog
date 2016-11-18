@@ -223,8 +223,8 @@ a {
 
 /*用户评论区域*/
 .mod-comment{
-	animation-duration: 3s;
-	-webkit-animation: fade-in 3s;
+	animation-duration: 1s;
+	-webkit-animation: fade-in 1s;
 }
 
 .mod-comment .comments{

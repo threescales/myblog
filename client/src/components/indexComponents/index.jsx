@@ -9,7 +9,7 @@ class Index extends React.Component{
       			<img className="avatar" src={touxiang} />
                 <h1>张有明</h1>
                 <p>工作 @ 北京小牛微微信息技术有限公司
-                    <a href="/about">About Me</a>
+                    <a href="/page/index.html">About Me</a>
                 </p>
                 <p className="address">
                     <img src={addressIcon} />中国北京
