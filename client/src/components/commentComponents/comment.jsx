@@ -30,7 +30,7 @@ class Comment extends React.Component{
 						document.getElementById("userName").value = '';
 						document.getElementById("commentContent").value = '';
 						
-						that.props.parentComponents.getComments(articleId);		
+						that.props.parentComponent.getComments(articleId);		
 					}else{
 						//后台报错处理逻辑
 					}

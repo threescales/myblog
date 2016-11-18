@@ -2,6 +2,10 @@ import React from 'react';
 import touxiang from '../../img/touxiang.jpg';
 
 class Header extends React.Component{
+	jump(articleType){
+		this.props.parentComponent.getArticles(articleType);
+	}
+	
 	render(){
 		return(
 		<header className="mod-head"  id="pageHeader">			
@@ -16,15 +20,15 @@ class Header extends React.Component{
 			<nav className="mod-head__nav">
 				<ul className="mod-head__ul">
 					<li id="menu-item-14" className="menu-item">
-						<a href="/page/index.html#/articles/1">前端</a>
+						<a href="/page/index.html#/articles/1" onClick={this.jump.bind(this,1)}>前端</a>
 						<span>·</span>
 					</li>
 					<li id="menu-item-15" className="menu-item">
-						<a href="/page/index.html#/articles/2">后端</a>
+						<a href="/page/index.html#/articles/2" onClick={this.jump.bind(this,2)}>后端</a>
 						<span>·</span>
 					</li>
 					<li id="menu-item-19" className="menu-item">
-						<a href="/page/index.html#/articles/3">随笔</a>
+						<a href="/page/index.html#/articles/3" onClick={this.jump.bind(this,3)}>随笔</a>
 						<span>·</span>
 					</li>
 					<li id="menu-item-32" className="menu-item">

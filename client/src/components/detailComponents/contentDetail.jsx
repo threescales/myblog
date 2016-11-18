@@ -89,7 +89,7 @@ class ContentDetail extends React.Component{
 	render(){
 		var header =  <Header />;
 		var article = this.state.article;
-		var comment = <Comment parentComponents={this}/>;
+		var comment = <Comment parentComponent={this}/>;
 		
 		return(
 			<div>

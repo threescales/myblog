@@ -12,6 +12,11 @@ class ContentList extends React.Component{
 	
 	componentDidMount(){
 		const articleType = this.props.params.articleType;
+		this.getArticles(articleType);
+		
+	}
+	
+	getArticles(articleType){
 		//赋值this指向
 		let that = this;
 		if(self.fetch) {
@@ -43,7 +48,7 @@ class ContentList extends React.Component{
 	}
 	
 	render(){
-		var header =  <Header />;
+		var header =  <Header parentComponent={this} />;
 		
 		return(
 			<div>
