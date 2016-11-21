@@ -125,7 +125,7 @@ class ContentDetail extends React.Component{
 									{/*<em>您的评论正在审核</em>*/}
 									<br/>
 									<div className="commentmetadata">
-										<a href="#">{result.createDate}</a>
+										<a href="javascript:void(0);">{result.createDate}</a>
 									</div>
 									<p>{result.content}</p>
 									<div className="reply">
@@ -143,7 +143,7 @@ class ContentDetail extends React.Component{
 											<em>您的评论正在审核</em>
 											<br/>
 											<div className="commentmetadata">
-												<a href="#">2016.11.04 11:56</a>
+												<a href="javascript:void(0)">2016.11.04 11:56</a>
 											</div>
 											<p>这个网站做的不错</p>
 											<div className="reply">
