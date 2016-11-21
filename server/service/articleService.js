@@ -25,7 +25,6 @@ var articleService = {
 				if (error) {
 					reject(error);
 				}else{
-					console.log('查询博客列表成功'+docs);
 					resolve(docs);
 				}
 			});
@@ -39,7 +38,6 @@ var articleService = {
 				if (error) {
 					reject(error);
 				}else{
-					console.log('查询博客详情成功'+docs);
 					resolve(docs);
 				}
 			});

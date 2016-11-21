@@ -201,6 +201,7 @@ a {
 /*文章标题*/
 .mod-post__title {
     margin-bottom: 30px;
+	color:#99cc33;
 }
 
 /*文章内容*/
@@ -251,7 +252,7 @@ a {
 }
 
 .comment-author{
-	color: #696969;
+	color: #cccccc;
     font-size: 12px;
 }
 
@@ -299,6 +300,7 @@ a {
 .reply a {
     color: #ccc;
     font-size: 12px;
+	margin-left: 3px;
 }
 
 .children{

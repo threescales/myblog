@@ -38,7 +38,7 @@ var CommentScheMa = new Schema({
 	userName: String,
 	content: String,
 	createDate: String,
-	forOtherFlag:String,
+	commentFlag: String,
 	toUserName:String,
 	toCommentId:String
 });

@@ -9,16 +9,16 @@ class Index extends React.Component{
       			<img className="avatar" src={touxiang} />
                 <h1>张有明</h1>
                 <p>工作 @ 北京小牛微微信息技术有限公司
-                    <a href="/page/index.html">About Me</a>
+                    <a href="#">About Me</a>
                 </p>
                 <p className="address">
                     <img src={addressIcon} />中国北京
                 </p>
                 <p className="nav">
-                    <a href="/page/index.html#/articles/1">前端</a>
-                    <a href="/page/index.html#/articles/2">后端</a>
-                    <a href="/page/index.html#/articles/3">随笔</a>
-                    <a href="/page/index.html">档案</a>
+                    <a href="#/articles/1">前端</a>
+                    <a href="#/articles/2">后端</a>
+                    <a href="#/articles/3">随笔</a>
+                    <a href="#">档案</a>
                 </p>
             </div>	 
 		)

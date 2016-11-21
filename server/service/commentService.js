@@ -22,7 +22,6 @@ var commentService = {
 				if (error) {
 					reject(error);
 				} else {
-					console.log('查询评论列表成功' + docs);
 					resolve(docs);
 				}
 			});

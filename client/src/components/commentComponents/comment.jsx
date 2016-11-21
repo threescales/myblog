@@ -9,20 +9,27 @@ class Comment extends React.Component{
 	submitComment(){
 		let that = this;
 		let userName = document.getElementById("userName").value;
-		if(trim(userName)==''){
+		if(this.trim(userName)==''){
 			
 		}
 		let content = document.getElementById("commentContent").value;
-		if(trim(content)==''){
+		if(this.trim(content)==''){
 			
 		}
 		let articleId = document.getElementById("articleId").value;
+		
+		let commentFlag = document.getElementById("commentFlag").value;
+		
+		let toUserName = document.getElementById("toUserName").value;
+		
+		let toCommentId = document.getElementById("toCommentId").value;
+		
 		fetch("/api/comment/addComment",{
 			method: "POST",
 				headers: {
     						"Content-Type": "application/x-www-form-urlencoded"
  				},
-				body:"articleId="+articleId+"&userName="+userName+"&content="+content+"&forOtherFlag=0&toUserName=0&toCommentId=0"
+				body:"articleId="+articleId+"&userName="+userName+"&content="+content+"&commentFlag="+commentFlag+"&toUserName="+toUserName+"&toCommentId="+toCommentId
 		}).then(function(response){
 				//处理json数据
 				response.json().then(function(data){
@@ -42,13 +49,20 @@ class Comment extends React.Component{
     	return s.replace(/(^\s*)|(\s*$)/g, "");
 	}
 
+	cancelReply(){
+		 document.getElementById("commentFlag").value = "0";
+		 document.getElementById("toUserName").value = "";
+		 document.getElementById("toCommentId").value = "";
+		 document.getElementById("cancelReply").innerHTML = "";
+	}
+
 	render(){
 		return(
 			<div className="comment-respond">
 				<h3>发表评论
-					{/*<small>
-						<a>取消回复</a>
-					</small>*/}
+					<small>
+						<a id="cancelReply" onClick={this.cancelReply.bind(this)}></a>
+					</small>
 				</h3>
 				<form>
 					<p className="comment-form-comment">

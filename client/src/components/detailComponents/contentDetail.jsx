@@ -85,12 +85,18 @@ class ContentDetail extends React.Component{
 		
 	}
 	
+	replyComment(toUserName,toCommentId){
+		 document.getElementById("commentFlag").value = "1";
+		 document.getElementById("toUserName").value = toUserName;
+		 document.getElementById("toCommentId").value = toCommentId;
+		 document.getElementById("cancelReply").innerHTML = "取消回复"+toUserName;
+	}
 	
 	render(){
 		var header =  <Header />;
 		var article = this.state.article;
 		var comment = <Comment parentComponent={this}/>;
-		
+		var that = this;
 		return(
 			<div>
 			{header}
@@ -106,15 +112,15 @@ class ContentDetail extends React.Component{
 			<h3 className="comments">{this.props.title}</h3>
 			<ol className="commentlist">
 				{
-					this.state.loadingComment ?
-					this.state.comments.map(function(result){
+					that.state.loadingComment ?
+					that.state.comments.map(function(result){
 						return (
 							<li>
 								<div className="comment-body">
 									<div className="comment-author">
 										<img className="avatar" src="http://v1.qzone.cc/avatar/201406/23/05/47/53a74f0397252504.jpg%21200x200.jpg" />
 										<cite className="fn">{result.userName}</cite>
-										<span className="says">说道：</span>
+										<span className="says">{result.commentFlag==1 ? "回复：" + result.toUserName : "说道"}</span>
 									</div>
 									{/*<em>您的评论正在审核</em>*/}
 									<br/>
@@ -123,7 +129,7 @@ class ContentDetail extends React.Component{
 									</div>
 									<p>{result.content}</p>
 									<div className="reply">
-										<a>回复</a>
+										<a href="javascript:void(0);" onClick={that.replyComment.bind(that,result.userName,result._id)}>回复</a>
 									</div>
 								</div>
 			{/*					<ul className="children">
@@ -154,6 +160,9 @@ class ContentDetail extends React.Component{
 			{comment}
 		</section>	
 		<input type="hidden" id="articleId" value={article._id} />
+		<input type="hidden" id="commentFlag" value="0" />
+		<input type="hidden" id="toCommentId" value="" />
+		<input type="hidden" id="toUserName" value="" />
 		</div>
 		)
 	}
