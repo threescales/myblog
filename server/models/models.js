@@ -22,7 +22,7 @@ var ArticleScheMa = new Schema({
 
 //通过类别查询文章列表
 ArticleScheMa.methods.findArticleByArticletype = function(articletype, callback){
-	return this.model('articles').find({'articletype': articletype,'hidden':'false'},'title createdate _id', callback);
+	return this.model('articles').find({'articletype': articletype,'hidden':'false'},'title createdate _id', callback).sort({_id:-1});
 };
 
 //通过id获取文章列表

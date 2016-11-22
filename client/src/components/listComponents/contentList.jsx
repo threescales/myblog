@@ -43,7 +43,7 @@ class ContentList extends React.Component{
 			});
 		} else {
     		// 不支持fetch框架处理逻辑
-			console.log('chrome or firefox is better for you');
+			alert('暂不支持手机浏览器预览');
 		}
 	}
 	

@@ -73,8 +73,7 @@ class ContentDetail extends React.Component{
 				});
 			});
 		} else {
-    		// 不支持fetch框架处理逻辑
-			console.log('chrome or firefox is better for you');
+    		alert('暂不支持手机浏览器预览');
 		}
 	}
 
@@ -122,7 +121,6 @@ class ContentDetail extends React.Component{
 										<cite className="fn">{result.userName}</cite>
 										<span className="says">{result.commentFlag==1 ? "回复：" + result.toUserName : "说道"}</span>
 									</div>
-									{/*<em>您的评论正在审核</em>*/}
 									<br/>
 									<div className="commentmetadata">
 										<a href="javascript:void(0);">{result.createDate}</a>
@@ -132,26 +130,6 @@ class ContentDetail extends React.Component{
 										<a href="javascript:void(0);" onClick={that.replyComment.bind(that,result.userName,result._id)}>回复</a>
 									</div>
 								</div>
-			{/*					<ul className="children">
-									<li>
-										<div className="comment-body">
-											<div className="comment-author">
-												<img className="avatar" src={touxiang} />
-												<cite className="fn">啊啊啊啊啊</cite>
-												<span className="says">说道：</span>
-											</div>
-											<em>您的评论正在审核</em>
-											<br/>
-											<div className="commentmetadata">
-												<a href="javascript:void(0)">2016.11.04 11:56</a>
-											</div>
-											<p>这个网站做的不错</p>
-											<div className="reply">
-												<a>回复</a>
-											</div>
-										</div>
-									</li>
-								</ul>*/}
 							</li>
 						)
 					}) : ''

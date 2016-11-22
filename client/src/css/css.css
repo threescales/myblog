@@ -69,7 +69,7 @@ a {
 	margin: 100px auto auto auto;
 	max-width: 500px;
 	padding: 0 20px;
-		animation: fade-in;
+	animation: fade-in;
 	animation-duration: 1s;
 	-webkit-animation: fade-in 1s;
 }
@@ -222,8 +222,21 @@ a {
 	background-color: #efefef;
 }
 
+.mod-post__entry blockquote{
+    padding: 1em;
+    margin: 2em 2em;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	border: 2px solid #e0dfcc;
+    overflow: auto;
+}
+
 /*用户评论区域*/
 .mod-comment{
+	animation: fade-in;
 	animation-duration: 1s;
 	-webkit-animation: fade-in 1s;
 }
@@ -319,6 +332,9 @@ a {
 /*评论*/
 .comment-respond {
     margin-top: 30px;
+	animation: fade-in;
+	animation-duration: 1s;
+	-webkit-animation: fade-in 1s;
 }
 
 .comment-respond p{
