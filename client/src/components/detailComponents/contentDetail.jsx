@@ -73,7 +73,7 @@ class ContentDetail extends React.Component{
 				});
 			});
 		} else {
-    		alert('暂不支持手机浏览器预览');
+    		alert('请用谷歌或火狐浏览器打开');
 		}
 	}
 
