@@ -2,6 +2,9 @@ import React from 'react';
 import Header from '../publicComponents/header.jsx';
 import Comment from '../commentComponents/comment.jsx';
 import touxiang from '../../img/touxiang.jpg';
+import youke from '../../img/youke.jpg';
+import axios from 'axios';
+import qs from 'qs';
 
 class ContentDetail extends React.Component{
 	constructor(props){
@@ -15,66 +18,34 @@ class ContentDetail extends React.Component{
 	}
 
 	getArticle(articleId){
-		
-		//赋值this指向
 		let that = this;
-		if(self.fetch) {
-    		// 使用 fetch 框架查询文章详情
-			fetch("/api/article/getArticleDetail",{
-				method: "POST",
-				headers: {
-    						"Content-Type": "application/x-www-form-urlencoded"
- 				},
-				body:"articleId="+articleId
-			}).then(function(response){
-				//处理json数据
-				response.json().then(function(data){
-					if(data.success){
-						Comment.article = data.datas;
-						//修改状态
-						that.setState({
-							article : data.datas,
-							loadingArticle: true
-						});					
-					}else{
-						//后台报错处理逻辑
-					}
-				});
-			});
-		}else{
-			// 不支持fetch框架处理逻辑
-			console.log('chrome or firefox is better for you');
-		}
+		axios.post('/api/article/getArticleDetail',qs.stringify({articleId:articleId})).then(function(response){
+			let data = response.data;
+			if(data.success){
+				Comment.article = data.datas;
+				that.setState({
+					article : data.datas,
+					loadingArticle: true
+				});					
+			}else{
+				//后台报错处理逻辑
+			}
+		});
 	}
 
 	getComments(articleId){
-			//赋值this指向
 		let that = this;
-		if(self.fetch) {
-		// 使用 fetch 框架查询文章详情
-			fetch("/api/comment/getComments",{
-				method: "POST",
-				headers: {
-    						"Content-Type": "application/x-www-form-urlencoded"
- 				},
-				body:"articleId="+articleId
-			}).then(function(response){
-				//处理json数据
-				response.json().then(function(data){
-					if(data.success){
-						//修改状态
-						that.setState({
-							comments : data.datas,
-							loadingComment: true
-						});					
-					}else{
-						//后台报错处理逻辑
-					}
-				});
-			});
-		} else {
-    		alert('请用谷歌或火狐浏览器打开');
-		}
+		axios.post('/api/comment/getComments',qs.stringify({articleId:articleId})).then(function(response){
+			let data = response.data;
+			if(data.success){
+				that.setState({
+					comments : data.datas,
+					loadingComment: true
+				});					
+			}else{
+				//后台报错处理逻辑
+			}
+		});
 	}
 
 	componentWillMount(){
@@ -117,7 +88,7 @@ class ContentDetail extends React.Component{
 							<li>
 								<div className="comment-body">
 									<div className="comment-author">
-										<img className="avatar" src="http://v1.qzone.cc/avatar/201406/23/05/47/53a74f0397252504.jpg%21200x200.jpg" />
+										<img className="avatar" src={youke} />
 										<cite className="fn">{result.userName}</cite>
 										<span className="says">{result.commentFlag==1 ? "回复：" + result.toUserName : "说道"}</span>
 									</div>

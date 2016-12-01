@@ -1,5 +1,7 @@
 import React from 'react';
 import touxiang from '../../img/touxiang.jpg';
+import axios from 'axios';
+import qs from 'qs';
 
 class Comment extends React.Component{
 	constructor(props){
@@ -23,26 +25,23 @@ class Comment extends React.Component{
 		let toUserName = document.getElementById("toUserName").value;
 		
 		let toCommentId = document.getElementById("toCommentId").value;
-		
-		fetch("/api/comment/addComment",{
-			method: "POST",
-				headers: {
-    						"Content-Type": "application/x-www-form-urlencoded"
- 				},
-				body:"articleId="+articleId+"&userName="+userName+"&content="+content+"&commentFlag="+commentFlag+"&toUserName="+toUserName+"&toCommentId="+toCommentId
-		}).then(function(response){
-				//处理json数据
-				response.json().then(function(data){
-					if(data.success){
-						document.getElementById("userName").value = '';
-						document.getElementById("commentContent").value = '';
-						
-						that.props.parentComponent.getComments(articleId);		
-					}else{
-						//后台报错处理逻辑
-					}
-				});
-			});
+		axios.post('/api/comment/addComment',qs.stringify({
+			articleId:articleId,
+			userName:userName,
+			content:content,
+			commentFlag:commentFlag,
+			toUserName:toUserName,
+			toCommentId:toCommentId
+		})).then(function(response){
+			let data = response.data;
+			if(data.success){
+				document.getElementById("userName").value = '';
+				document.getElementById("commentContent").value = '';						
+				that.props.parentComponent.getComments(articleId);		
+			}else{
+				//后台报错处理逻辑
+			}
+		});
 	}
 	
 	trim(s){

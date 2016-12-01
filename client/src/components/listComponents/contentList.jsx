@@ -1,5 +1,7 @@
 import React from 'react';
-import Header from '../publicComponents/header.jsx'
+import Header from '../publicComponents/header.jsx';
+import axios from 'axios';
+import qs from 'qs';
 
 class ContentList extends React.Component{
 	constructor(props){
@@ -19,32 +21,19 @@ class ContentList extends React.Component{
 	getArticles(articleType){
 		//赋值this指向
 		let that = this;
-		if(self.fetch) {
-    		// 使用 fetch 框架查询文章列表
-			fetch("/api/article/getArticles",{
-				method: "POST",
-				headers: {
-    						"Content-Type": "application/x-www-form-urlencoded"
- 				},
-				body:"articletype="+articleType
-			}).then(function(response){
-				//处理json数据
-				response.json().then(function(data){
-					if(data.success){
-						//修改状态
-						that.setState({
-							articles : data.datas,
-							loadingData: true
-						});					
-					}else{
-						//后台报错处理逻辑
-					}
-				});
-			});
-		} else {
-    		// 不支持fetch框架处理逻辑
-			alert('请用谷歌或火狐浏览器打开');
-		}
+		axios.post('/api/article/getArticles',qs.stringify({articletype:articleType})).then(function(response){
+			//处理json数据
+			let data = response.data;
+			if(data.success){
+			//修改状态
+				that.setState({
+					articles : data.datas,
+					loadingData: true
+				});					
+			}else{
+				//后台报错处理逻辑
+			}
+		});
 	}
 	
 	render(){

@@ -11,7 +11,7 @@ var config = {
     //配置入口
     entry:{
         index:'./client/src/js/entry/index.js',//入口1
-        vendors:['react','react-router']//抽成公用的可以减少重复打包，当你是多个入库页面时就能体会到其作用
+        vendors:['react','react-router','axios']//抽成公用的可以减少重复打包，当你是多个入库页面时就能体会到其作用
     },
     //配置出口你想要输出的地方
     output:{
