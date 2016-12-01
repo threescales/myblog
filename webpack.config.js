@@ -11,16 +11,19 @@ var config = {
     //配置入口
     entry:{
         index:'./client/src/js/entry/index.js',//入口1
-        vendors:['react','react-router','axios']//抽成公用的可以减少重复打包，当你是多个入库页面时就能体会到其作用
+        vendors:['react','react-router']//抽成公用的可以减少重复打包，当你是多个入库页面时就能体会到其作用
     },
     //配置出口你想要输出的地方
     output:{
         path: path.join(__dirname,'client/dist'),
         filename:'js/[name].js',
-        chunkFilename:'require/js/[id].chunk.js'//会将按需加载的生成js存放到的这个文件夹下面
+        chunkFilename:'require/js/[id].chunk.js',//会将按需加载的生成js存放到的这个文件夹下面
+        publicPath:'/'
     },
-    resolve:{
-        alias: {}
+    externals:{
+        'react':'window.React',
+        'react-dom':'window.ReactDOM'
+        
     },
     //加载器
     module:{
@@ -33,8 +36,8 @@ var config = {
             },
             {test: /\.scss$/,  loader: ExtractTextPlugin.extract('style', 'css!sass')},
             {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},//把样式独立出来
-            {test: /\.(eot|svg|ttf|woff|woff2)/, loader: 'url-loader?limit=50000&name=[path][name].[ext]'},
-            {test: /\.(jpg|png|gif)$/,loader: 'url?limit=25000&name=image/[hash].[ext]'},//url-loader 传入的 limit 参数是告诉它图片如果不大于 25KB 的话要自动在它从属的 css 文件中转成 BASE64 字符串。 
+            {test: /\.(eot|svg|ttf|woff|woff2)/, loader: 'url-loader?limit=10000&name=font/[hash].[ext]'},
+            {test: /\.(jpg|png|gif)$/,loader: 'url?limit=10000&name=image/[hash].[ext]'},//url-loader 传入的 limit 参数是告诉它图片如果不大于 25KB 的话要自动在它从属的 css 文件中转成 BASE64 字符串。 
             //加载html
             {test: /\.html$/, loader: "html" },
         ]
