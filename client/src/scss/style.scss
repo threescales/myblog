@@ -1,24 +1,47 @@
+$background:#000000;
 $init-color:#fefefe;
 $h3-color:#efefef;
 $a-color:#cecece;
-$content-font-family:"Microsoft JhengHei", sans-serif;
+$article-title:#99cc33;
 
+
+$content-font-family:Arial, Helvetica, 宋体;
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-body {
-	max-width: 900px;
+body {	
 	font: 400 16px/1.62 $content-font-family;
 	color: $init-color;
 	overflow: hidden;
-	background-color:#424242;
+	background-color:$background;	
+	overflow-x: hidden;
+    overflow-y: auto;
+}
+@media(max-width:900px){
+	.left{
+		float: left;
+		display: none;	
+	}
+	.right{
+		float: right;
+		display: none;	
+	}
+}
+.left{
+		float: left;
+		width:200px;
+}
+.right{
+		float: right;
+		width: 200px;
+}
+.center{
+	max-width: 900px;
 	padding:0 20px;
 	margin:0 auto;
-	overflow-x: hidden;
-	overflow-y:auto;
 }
 
 h1 {
@@ -61,6 +84,7 @@ a {
 	width:24px;
 	height: 24px;
 }
+
 
 /**首页**/
 .willerce {
@@ -137,7 +161,7 @@ a {
 	border-radius: 1.3rem;
 	display: inline-block;
 	@include headSize(26px);
-	color: #fff;
+	color: $h3-color;
 	vertical-align: top;
 	position: absolute;
 	top: 0;
@@ -162,12 +186,12 @@ a {
 }
 
 .mod-archive__year {
-	color: #999;
+	color: $init-color;
 	font-family: $content-font-family;
 }
 
 .mod-archive__time {
-	color: #666;
+	color: $h3-color;
 	font-family: $content-font-family;
 	font-size: 14px
 }
@@ -187,7 +211,7 @@ a {
 /*文章标题*/
 .mod-post__title {
     margin-bottom: 30px;
-	color:#99cc33;
+	color:$article-title;
 }
 
 /*文章内容*/
@@ -202,7 +226,7 @@ a {
 	img{
 		max-width:100%;
 		height: auto;
-		background-color: #efefef;
+		background-color: $h3-color;
 	}
 	blockquote{
     	padding: 1em;
@@ -222,7 +246,7 @@ a {
 	@include fadeIn(1s);
 	.comments{
 		margin: 20px 0;
-    	border-left: 3px solid #efefef;
+    	border-left: 3px solid $h3-color;
    	 	text-indent: 20px;
     	white-space: nowrap;
     	overflow: hidden;
@@ -311,7 +335,11 @@ a {
 		margin:8px 0px;
 		textarea{
 			width: 100%;
-		}
+			border-radius: 5px;
+		};
+		input {
+			border-radius: 5px;	
+		};
 	}
 }
 
@@ -320,8 +348,17 @@ a {
 .form-submit .submit{
 	width: 100%;
     border: 0;
-    background: #F9F9F9;
+    background: #333333;
     padding: 10px 0;
-    color: #636363;
-    font-family: $content-font-family;
+    color: #efefef;
+    font-family: Microsoft JhengHei,sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.clock{
+	height: 70px;
+    width: 160px;
+	background-color: #000000;
+	margin: 20px 20px;
 }

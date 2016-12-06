@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../publicComponents/header.jsx';
+import Clock from '../publicComponents/clock.jsx';
 import axios from 'axios';
 import qs from 'qs';
 
@@ -38,30 +39,35 @@ class ContentList extends React.Component{
 	
 	render(){
 		var header =  <Header parentComponent={this} />;
-		
+		var clock = <Clock />
 		return(
 			<div>
-			{header}
-			<article className="mod-archive">
-			<div className="mod-archive__item">
-				<div id="2015" className="mod-archive__year">2016</div>
-				<ul className="mod-archive__list">
-					{
-						this.state.loadingData ?
-						this.state.articles.map(function(result){
-							return (
-									<li>
-										<time className="mod-archive__time">{result.createdate}</time>
-										<span>—</span>
-										<a href={"index.html#/article/"+result._id}>{result.title}</a>
-									</li>
-								);
-						}) : ''
-					}
-				</ul>
+				<div className="left">
+					{clock}
+				</div>
+				<div className="center">
+					{header}
+					<article className="mod-archive">
+					<div className="mod-archive__item">
+						<div id="2015" className="mod-archive__year">2016</div>
+						<ul className="mod-archive__list">
+							{
+								this.state.loadingData ?
+								this.state.articles.map(function(result){
+									return (
+											<li>
+												<time className="mod-archive__time">{result.createdate}</time>
+												<span>—</span>
+												<a href={"#/article/"+result._id}>{result.title}</a>
+											</li>
+										);
+								}) : ''
+							}
+						</ul>
+					</div>
+					</article>
+				</div>
 			</div>
-		</article>
-		</div>
 		)
 	}
 	

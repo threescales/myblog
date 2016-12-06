@@ -11,7 +11,7 @@ var config = {
     //配置入口
     entry:{
         index:'./client/src/js/entry/index.js',//入口1
-        vendors:['react','react-router']//抽成公用的可以减少重复打包，当你是多个入库页面时就能体会到其作用
+        vendors:['qs','axios']//抽成公用的可以减少重复打包，当你是多个入库页面时就能体会到其作用
     },
     //配置出口你想要输出的地方
     output:{
@@ -22,7 +22,8 @@ var config = {
     },
     externals:{
         'react':'window.React',
-        'react-dom':'window.ReactDOM'
+        'react-dom':'window.ReactDOM',
+        'react-router':'window.ReactRouter'
         
     },
     //加载器
@@ -59,9 +60,9 @@ var config = {
         
         //将html打包压缩
         new HtmlWebpackPlugin({
-            filename:'page/index.html',//生成的html存放路径，相对于 path
+            filename:'index.html',//生成的html存放路径，相对于 path
             template:'./client/src/page/index.html', //html模板路径
-            chunks:['vendors','index'],//区分你想要加载的js，名字要跟entry入口定义的保存一直
+            chunks:['vendors', 'index'],//区分你想要加载的js，名字要跟entry入口定义的保存一直
             inject:true, //允许插件修改哪些内容，包括head与body
             hash:true,//为静态资源生成hash值，可以实现缓存
             minify:{

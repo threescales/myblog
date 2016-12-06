@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../publicComponents/header.jsx';
+import Clock from '../publicComponents/clock.jsx';
 import Comment from '../commentComponents/comment.jsx';
 import touxiang from '../../img/touxiang.jpg';
 import youke from '../../img/youke.jpg';
@@ -64,54 +65,60 @@ class ContentDetail extends React.Component{
 	
 	render(){
 		var header =  <Header />;
+		var clock = <Clock />
 		var article = this.state.article;
 		var comment = <Comment parentComponent={this}/>;
 		var that = this;
 		return(
 			<div>
-			{header}
-			<article>
-				<header>
-					<h1 className="mod-post__title">{article.title}</h1>
-				</header>
-				<div className="mod-post__entry wzulli" dangerouslySetInnerHTML={{__html: article.body}}>
+				<div className="left">
+				{clock}
 				</div>
-			</article>
-			
-			<section className="mod-comment">
-			<h3 className="comments">{this.props.title}</h3>
-			<ol className="commentlist">
-				{
-					that.state.loadingComment ?
-					that.state.comments.map(function(result){
-						return (
-							<li>
-								<div className="comment-body">
-									<div className="comment-author">
-										<img className="avatar" src={youke} />
-										<cite className="fn">{result.userName}</cite>
-										<span className="says">{result.commentFlag==1 ? "回复：" + result.toUserName : "说道"}</span>
-									</div>
-									<br/>
-									<div className="commentmetadata">
-										<a href="javascript:void(0);">{result.createDate}</a>
-									</div>
-									<p>{result.content}</p>
-									<div className="reply">
-										<a href="javascript:void(0);" onClick={that.replyComment.bind(that,result.userName,result._id)}>回复</a>
-									</div>
-								</div>
-							</li>
-						)
-					}) : ''
-				}
-			</ol>
-			{comment}
-		</section>	
-		<input type="hidden" id="articleId" value={article._id} />
-		<input type="hidden" id="commentFlag" value="0" />
-		<input type="hidden" id="toCommentId" value="" />
-		<input type="hidden" id="toUserName" value="" />
+				<div className="center">
+					{header}
+					<article>
+						<header>
+							<h1 className="mod-post__title">{article.title}</h1>
+						</header>
+						<div className="mod-post__entry wzulli" dangerouslySetInnerHTML={{__html: article.body}}>
+						</div>
+					</article>
+					
+					<section className="mod-comment">
+					<h3 className="comments">{this.props.title}</h3>
+					<ol className="commentlist">
+						{
+							that.state.loadingComment ?
+							that.state.comments.map(function(result){
+								return (
+									<li>
+										<div className="comment-body">
+											<div className="comment-author">
+												<img className="avatar" src={youke} />
+												<cite className="fn">{result.userName}</cite>
+												<span className="says">{result.commentFlag==1 ? "回复：" + result.toUserName : "说道"}</span>
+											</div>
+											<br/>
+											<div className="commentmetadata">
+												<a href="javascript:void(0);">{result.createDate}</a>
+											</div>
+											<p>{result.content}</p>
+											<div className="reply">
+												<a href="javascript:void(0);" onClick={that.replyComment.bind(that,result.userName,result._id)}>回复</a>
+											</div>
+										</div>
+									</li>
+								)
+							}) : ''
+						}
+					</ol>
+					{comment}
+				</section>	
+				<input type="hidden" id="articleId" value={article._id} />
+				<input type="hidden" id="commentFlag" value="0" />
+				<input type="hidden" id="toCommentId" value="" />
+				<input type="hidden" id="toUserName" value="" />
+			</div>
 		</div>
 		)
 	}

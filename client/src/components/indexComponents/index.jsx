@@ -5,7 +5,7 @@ import addressIcon from '../../img/addressw.png';
 class Index extends React.Component{
 	render(){
 		return(
-		    <div className="willerce">
+		    <div className="center willerce">
       			<img className="avatar" src={touxiang} />
                 <h1>张有明</h1>
                 <p>工作 @ 北京小牛微微信息技术有限公司

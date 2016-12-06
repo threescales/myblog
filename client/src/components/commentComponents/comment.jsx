@@ -69,7 +69,7 @@ class Comment extends React.Component{
 					</p>
 					<p className="comment-form-author">
 						<label>您的姓名</label>
-						<input type="text" size="30" maxlength="245" id="userName" ></input>
+						<input type="text" size="30" maxlength="245" id="userName" class="input-comment"></input>
 					</p>
 					<p className="form-submit">
 						<input type="button" className="submit" value="发表评论" onClick={this.submitComment.bind(this) }/>
