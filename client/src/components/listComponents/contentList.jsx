@@ -40,6 +40,30 @@ class ContentList extends React.Component{
 	render(){
 		var header =  <Header parentComponent={this} />;
 		var clock = <Clock />
+		let year = '0000';
+		let lyear = '0000';
+		let list = '';
+		this.state.articles.map(function(result){
+			if(!result.createdate.includes(year)){
+				lyear =  result.createdate.substring(0,4);
+				list+='<div class="mod-archive__item">';
+				list+='<div id='+lyear+' class="mod-archive__year">'+lyear+'</div>';
+				list+='<ul class="mod-archive__list">';
+			}
+			if(result.createdate.includes(lyear)){
+				list+='<li>';
+				list+='<time class="mod-archive__time">'+result.createdate+'</time>';
+				list+='<span>—</span>';
+				list+='<a href="#/article/"'+result._id+'>'+result.title+'</a>';
+				list+='</li>';											
+			}
+			if(!result.createdate.includes(year)){
+				year = result.createdate.substring(0,4);												
+				list+='</ul>';
+				list+='</div>';
+			}
+			return (list);
+		});
 		return(
 			<div>
 				<div className="left">
@@ -47,24 +71,7 @@ class ContentList extends React.Component{
 				</div>
 				<div className="center">
 					{header}
-					<article className="mod-archive">
-					<div className="mod-archive__item">
-						<div id="2015" className="mod-archive__year">2016</div>
-						<ul className="mod-archive__list">
-							{
-								this.state.loadingData ?
-								this.state.articles.map(function(result){
-									return (
-											<li>
-												<time className="mod-archive__time">{result.createdate}</time>
-												<span>—</span>
-												<a href={"#/article/"+result._id}>{result.title}</a>
-											</li>
-										);
-								}) : ''
-							}
-						</ul>
-					</div>
+					<article className="mod-archive" dangerouslySetInnerHTML={{__html: list}}>
 					</article>
 				</div>
 			</div>

@@ -26,6 +26,9 @@ var config = {
         'react-router':'window.ReactRouter'
         
     },
+    resolve: {
+        extensions: ['', '.js', '.jsx'], //后缀名自动补全
+    },
     //加载器
     module:{
         noParse: [],

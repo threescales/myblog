@@ -88,7 +88,6 @@ class ContentDetail extends React.Component{
 					<h3 className="comments">{this.props.title}</h3>
 					<ol className="commentlist">
 						{
-							that.state.loadingComment ?
 							that.state.comments.map(function(result){
 								return (
 									<li>
@@ -109,7 +108,7 @@ class ContentDetail extends React.Component{
 										</div>
 									</li>
 								)
-							}) : ''
+							})
 						}
 					</ol>
 					{comment}
