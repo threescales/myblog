@@ -24,6 +24,7 @@ class ContentDetail extends React.Component{
 			let data = response.data;
 			if(data.success){
 				Comment.article = data.datas;
+				document.title = data.datas.title;
 				that.setState({
 					article : data.datas,
 					loadingArticle: true
@@ -76,7 +77,7 @@ class ContentDetail extends React.Component{
 				</div>
 				<div className="center">
 					{header}
-					<article>
+					<article className="mod-archive">
 						<header>
 							<h1 className="mod-post__title">{article.title}</h1>
 						</header>
@@ -95,13 +96,13 @@ class ContentDetail extends React.Component{
 											<div className="comment-author">
 												<img className="avatar" src={youke} />
 												<cite className="fn">{result.userName}</cite>
-												<span className="says">{result.commentFlag==1 ? "回复：" + result.toUserName : "说道"}</span>
+												<span className="says">{result.commentFlag==1 ? "回复：" + result.toUserName : "说道："}</span>				
 											</div>
-											<br/>
+											<br />
+											<p>{result.content}</p>
 											<div className="commentmetadata">
 												<a href="javascript:void(0);">{result.createDate}</a>
-											</div>
-											<p>{result.content}</p>
+											</div>											
 											<div className="reply">
 												<a href="javascript:void(0);" onClick={that.replyComment.bind(that,result.userName,result._id)}>回复</a>
 											</div>

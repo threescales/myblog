@@ -12,11 +12,17 @@ class Comment extends React.Component{
 		let that = this;
 		let userName = document.getElementById("userName").value;
 		if(this.trim(userName)==''){
-			
+			document.getElementById("userName").className = 'blank';
+			return;
+		}else{
+			document.getElementById("userName").className = '';
 		}
 		let content = document.getElementById("commentContent").value;
 		if(this.trim(content)==''){
-			
+			document.getElementById("commentContent").className = 'blank';
+			return;
+		}else{
+			document.getElementById("commentContent").className = '';
 		}
 		let articleId = document.getElementById("articleId").value;
 		
@@ -64,12 +70,13 @@ class Comment extends React.Component{
 					</small>
 				</h3>
 				<form>
-					<p className="comment-form-comment">
-						<textarea cols="45" rows="8" maxlength="65525" id="commentContent"></textarea>
-					</p>
 					<p className="comment-form-author">
-						<label>您的姓名</label>
-						<input type="text" size="30" maxlength="245" id="userName" class="input-comment"></input>
+						<label>您的姓名</label><span>(必填):</span>
+						<input type="text" maxlength="8" id="userName" class="input-comment"></input>
+					</p>
+					<p className="comment-form-comment">
+						<label>回复内容</label><span>(必填):</span>
+						<textarea cols="45" rows="8" maxlength="65525" id="commentContent"></textarea>
 					</p>
 					<p className="form-submit">
 						<input type="button" className="submit" value="发表评论" onClick={this.submitComment.bind(this) }/>

@@ -3,6 +3,9 @@ import touxiang from '../../img/touxiang.jpg';
 import addressIcon from '../../img/addressw.png';
 
 class Index extends React.Component{
+    componetWillMount(){
+        document.title = "张有明的手札";
+    }
 	render(){
 		return(
 		    <div className="center willerce">

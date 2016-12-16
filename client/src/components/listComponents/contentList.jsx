@@ -13,10 +13,11 @@ class ContentList extends React.Component{
 		};
 	}
 	
-	componentDidMount(){
+	componentWillMount(){
+		document.title = "张有明的手札";
+		this.addForEach();
 		const articleType = this.props.params.articleType;
 		this.getArticles(articleType);
-		
 	}
 	
 	getArticles(articleType){
@@ -26,7 +27,7 @@ class ContentList extends React.Component{
 			//处理json数据
 			let data = response.data;
 			if(data.success){
-			//修改状态
+				//修改状态
 				that.setState({
 					articles : data.datas,
 					loadingData: true
@@ -37,33 +38,66 @@ class ContentList extends React.Component{
 		});
 	}
 	
+	getArticlesList(){
+		var year = '0000';
+		var num = 0;
+		var list = '';
+		var articleList = this.state.articles;
+		articleList.forEach(function(result){
+			if(result.createdate.indexOf(year)==-1){
+				if(num!=0){
+					list+='</ul>';
+					list+='</div>';
+				}	
+				year = result.createdate.substring(0,4);
+				list+='<div class="mod-archive__item">';
+				list+='<div id='+year+' class="mod-archive__year">'+year+'</div>';
+				list+='<ul class="mod-archive__list">';
+				num++;
+			}
+			list+='<li>';
+			list+='<time class="mod-archive__time">'+result.createdate+'</time>';
+			list+='<span>—</span>';
+			list+='<a href=#/article/'+result._id+'>'+result.title+'</a>';
+			list+='</li>';									
+		});
+		list+='</ul>';
+		list+='</div>';
+		return list
+	}
+	
+	addForEach(){
+			if (!Array.prototype.forEach) {  
+				Array.prototype.forEach = function(callback, thisArg) {  
+					var T, k;  
+					if (this == null) {  
+						throw new TypeError(" this is null or not defined");  
+					}  
+					var O = Object(this);  
+					var len = O.length >>> 0; // Hack to convert O.length to a UInt32  
+					if ({}.toString.call(callback) != "[object Function]") {  
+						throw new TypeError(callback + " is not a function");  
+					}  
+					if (thisArg) {  
+						T = thisArg;  
+					}  
+					k = 0;  
+					while (k < len) {  
+						var kValue;  
+						if (k in O) {  
+							kValue = O[k];  
+							callback.call(T, kValue, k, O);  
+						}  
+						k++;  
+					}  
+				};  
+			}  
+	}
+	
 	render(){
 		var header =  <Header parentComponent={this} />;
 		var clock = <Clock />
-		let year = '0000';
-		let lyear = '0000';
-		let list = '';
-		this.state.articles.map(function(result){
-			if(!result.createdate.includes(year)){
-				lyear =  result.createdate.substring(0,4);
-				list+='<div class="mod-archive__item">';
-				list+='<div id='+lyear+' class="mod-archive__year">'+lyear+'</div>';
-				list+='<ul class="mod-archive__list">';
-			}
-			if(result.createdate.includes(lyear)){
-				list+='<li>';
-				list+='<time class="mod-archive__time">'+result.createdate+'</time>';
-				list+='<span>—</span>';
-				list+='<a href="#/article/"'+result._id+'>'+result.title+'</a>';
-				list+='</li>';											
-			}
-			if(!result.createdate.includes(year)){
-				year = result.createdate.substring(0,4);												
-				list+='</ul>';
-				list+='</div>';
-			}
-			return (list);
-		});
+		var articleList = this.getArticlesList();
 		return(
 			<div>
 				<div className="left">
@@ -71,7 +105,7 @@ class ContentList extends React.Component{
 				</div>
 				<div className="center">
 					{header}
-					<article className="mod-archive" dangerouslySetInnerHTML={{__html: list}}>
+					<article className="mod-archive" dangerouslySetInnerHTML={{__html: articleList}}>
 					</article>
 				</div>
 			</div>
