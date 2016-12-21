@@ -12,17 +12,30 @@ class Comment extends React.Component{
 		let that = this;
 		let userName = document.getElementById("userName").value;
 		if(this.trim(userName)==''){
-			document.getElementById("userName").className = 'blank';
+			document.getElementById("userName").value = '';
+			document.getElementById("userName").focus();
 			return;
-		}else{
-			document.getElementById("userName").className = '';
 		}
+		
+		let userEmail = document.getElementById("userEmail").value;
+		if(this.trim(userEmail)==''){
+			document.getElementById("userEmail").value = '';
+			document.getElementById("userEmail").focus();
+			return;
+		}
+		console.log(userEmail);
+		if (userEmail.indexOf('@') == -1){
+			document.getElementById("userEmail").value = '';
+			document.getElementById("userEmail").placeholder = 'Please enter your vaild email!';
+			document.getElementById("userEmail").focus();
+			return;
+		}
+		
 		let content = document.getElementById("commentContent").value;
 		if(this.trim(content)==''){
-			document.getElementById("commentContent").className = 'blank';
+			document.getElementById("commentContent").value = '';
+			document.getElementById("commentContent").focus();
 			return;
-		}else{
-			document.getElementById("commentContent").className = '';
 		}
 		let articleId = document.getElementById("articleId").value;
 		
@@ -35,14 +48,16 @@ class Comment extends React.Component{
 			articleId:articleId,
 			userName:userName,
 			content:content,
+			userEmail:userEmail,
 			commentFlag:commentFlag,
 			toUserName:toUserName,
-			toCommentId:toCommentId
+			toCommentId:toCommentId,			
 		})).then(function(response){
 			let data = response.data;
 			if(data.success){
 				document.getElementById("userName").value = '';
-				document.getElementById("commentContent").value = '';						
+				document.getElementById("commentContent").value = '';	
+				document.getElementById("userEmail").value = '';					
 				that.props.parentComponent.getComments(articleId);		
 			}else{
 				//后台报错处理逻辑
@@ -69,18 +84,11 @@ class Comment extends React.Component{
 						<a id="cancelReply" onClick={this.cancelReply.bind(this)}></a>
 					</small>
 				</h3>
-				<form>
-					<p className="comment-form-author">
-						<label>您的姓名</label><span>(必填):</span>
-						<input type="text" maxlength="8" id="userName" class="input-comment"></input>
-					</p>
-					<p className="comment-form-comment">
-						<label>回复内容</label><span>(必填):</span>
-						<textarea cols="45" rows="8" maxlength="65525" id="commentContent"></textarea>
-					</p>
-					<p className="form-submit">
-						<input type="button" className="submit" value="发表评论" onClick={this.submitComment.bind(this) }/>
-					</p>
+				<form className="comment-form">
+					<input name="name" placeholder="What is your name?" className="name" required id="userName"/>
+					<input name="emailaddress" placeholder="What is your email?" className="email" type="email" required id="userEmail"/>
+    				<textarea rows="4" cols="50" name="subject" placeholder="Please enter your message" className="message" id="commentContent" required></textarea>
+    				<input name="button" className="btn" type="button" value="Send" onClick={this.submitComment.bind(this)} />
 				</form>
 			</div>
 		)

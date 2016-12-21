@@ -1,9 +1,10 @@
-$background:#424242;
+$background:#212325;
 $init-color:#fefefe;
 $h3-color:#efefef;
 $a-color:#cecece;
 $article-title:#99cc33;
-$border-color:#666;
+$border:1px solid #555;
+$white:#fff;
 
 $content-font-family:Arial, Helvetica, 宋体;
 * {
@@ -275,7 +276,7 @@ a {
 .comment-body{
 	padding: 20px 0px;
     position: relative;
-	border-bottom: 1px solid $border-color;
+	border-bottom: $border;
 	p {
     	font-size: 16px;
 		margin-top:8px;
@@ -390,5 +391,126 @@ a {
 	background-color: $background;
 	margin: 20px 20px;
 	display:none;
+}
+@mixin clip(){
+	-moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+@mixin radius($size){
+	-moz-border-radius: $size;
+	-webkit-border-radius: $size;
+	border-radius: $size;
+}
+@mixin shadow(){
+	-webkit-box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+	-moz-box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+	box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+}
+@mixin comment-background($color1,$color2){
+	background: $color2;
+	background: -webkit-gradient(linear, left top, left bottom, from($color1), to($color2));
+	background: -webkit-linear-gradient(top, $color1, $color2);
+	background: -moz-linear-gradient(top, $color1, $color2);
+	background: -ms-linear-gradient(top, $color1, $color2);
+	background: -o-linear-gradient(top, $color1, $color2);
+	background-image: -ms-linear-gradient(top, $color1 0%, $color2 100%);
+}
+/**评论**/
+.comment-form {
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    height: 333px;
+    padding:30px;
+    border: 1px solid rgba(0,0,0,.2);
+    @include radius(5px);
+    @include clip();
+    background: rgba(0, 0, 0, 0.5); 
+    -moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    overflow: hidden; 
+	textarea{
+		background: rgba(255, 255, 255, 0.4) no-repeat scroll 16px 16px; 
+		width: 100%;
+		height: 110px;
+		border: 1px solid rgba(255,255,255,.6);
+		@include radius(4px);
+		@include clip();
+		display:block;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size:18px;
+		color:$white;
+		padding:0 20px;
+		margin-bottom:20px;
+		overflow:hidden;
+	};
+	input {
+		width: 100%;
+		height: 48px;
+		border: 1px solid rgba(255,255,255,.4);
+		@include radius(4px);
+		@include clip();
+		background-color: #6f7070;
+		display:block;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size:18px;
+		color:$white;
+		padding:0 20px;
+		margin-bottom:20px;
+	};
+	input[type=submit] {
+		cursor:pointer;
+	};
+	input:focus, textarea:focus { 
+		background-color: rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
+		-webkit-box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
+		box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
+		overflow: hidden; 
+	};
+	.btn {
+		width: 138px;
+		height: 44px;
+		float:right;
+		border: 1px solid #253737;
+		padding: 10.5px 21px;
+		@include radius(6px);
+		@include shadow();
+		@include comment-background(#6da5a3,#416b68);
+		text-shadow: #333333 0 1px 0;
+		color: #e1e1e1;
+	};
+	.btn:hover {
+		border: 1px solid #253737;
+		text-shadow: #333333 0 1px 0;
+		@include comment-background(#77b2b0,#416b68);
+		color: $white;
+	};
+	.btn:active {
+		margin-top:1px;
+		text-shadow: #333333 0 -1px 0;
+		border: 1px solid #253737;
+		@include comment-background(#416b68,#6da5a3);
+		color: $white;
+		@include shadow();
+	};
+}
+
+::-webkit-input-placeholder {
+	  color: $white;
+}
+
+:-moz-placeholder{ 
+    color: $white; 
+}
+
+::-moz-placeholder {
+    color: $white;
+}
+
+:-ms-input-placeholder {  
+	  color: $white; 
 }
 

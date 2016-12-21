@@ -1,11 +1,11 @@
 var commentService = require('../service/commentService');
 var moment = require('moment');
-
 var commentApi = {
 	addComment: function(req,res){
 		var comment = {};
 		comment.articleId = req.body.articleId;
 		comment.userName = req.body.userName;
+		comment.userEmail = req.body.userEmail;
 		comment.content = req.body.content;
 		comment.createDate = moment().format("YYYY-MM-DD HH:mm:ss");
 		comment.commentFlag = req.body.commentFlag;

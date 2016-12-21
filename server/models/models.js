@@ -36,6 +36,7 @@ exports.ArticleModel = mongoose.model('articles',ArticleScheMa);
 var CommentScheMa = new Schema({
 	articleId: String,
 	userName: String,
+	userEmail: String,
 	content: String,
 	createDate: String,
 	commentFlag: String,
@@ -49,3 +50,14 @@ CommentScheMa.methods.findCommentByArticleId = function(articleId,callback){
 };
 
 exports.CommentModel = mongoose.model('comments',CommentScheMa);
+
+//用户模型
+var VisitorScheMa = new Schema({
+	userName:String,
+	email:String
+});
+
+VisitorScheMa.methods.findUserByUserName = function(userName,callback){
+	return this.model('visitors').find({'userName':userName},callback);
+}
+exports.VisitorModel = mongoose.model('visitors',VisitorScheMa);
