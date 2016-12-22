@@ -3,7 +3,7 @@ import Header from '../publicComponents/header.jsx';
 import Clock from '../publicComponents/clock.jsx';
 import Comment from '../commentComponents/comment.jsx';
 import touxiang from '../../img/touxiang.jpg';
-import youke from '../../img/youke.jpg';
+import youke from '../../img/youke.png';
 import axios from 'axios';
 import qs from 'qs';
 
