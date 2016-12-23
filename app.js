@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-
+var compression = require('compression');  
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var methodOverride = require('method-override');
@@ -15,6 +15,7 @@ var app = express();
 app.set('port', process.env.PORT || 80);
 
 //一些中间件
+app.use(compression());  
 app.use(logger('dev'));
 app.use(methodOverride());
 app.use(session({

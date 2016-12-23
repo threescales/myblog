@@ -23,7 +23,6 @@ class Comment extends React.Component{
 			document.getElementById("userEmail").focus();
 			return;
 		}
-		console.log(userEmail);
 		if (userEmail.indexOf('@') == -1){
 			document.getElementById("userEmail").value = '';
 			document.getElementById("userEmail").placeholder = 'Please enter your vaild email!';
