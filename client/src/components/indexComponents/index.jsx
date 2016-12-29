@@ -1,18 +1,20 @@
 import React from 'react';
 import touxiang from '../../img/touxiang.jpg';
 import addressIcon from '../../img/addressw.png';
+import Footer from '../publicComponents/footer.jsx';
 
 class Index extends React.Component{
     componetWillMount(){
         document.title = "张有明的手札";
     }
 	render(){
+        var footer = <Footer />
 		return(
 		    <div className="center willerce">
       			<img className="avatar" src={touxiang} />
                 <h1>张有明</h1>
                 <p>工作 @ 北京小牛微微信息技术有限公司
-                    <a href="#">About Me</a>
+                    <a className="about" href="/myself/index.html">About Me</a>
                 </p>
                 <p className="address">
                     <img src={addressIcon} />中国北京
@@ -23,6 +25,7 @@ class Index extends React.Component{
                     <a href="#/articles/3">随笔</a>
                     <a href="#">档案</a>
                 </p>
+                {footer}
             </div>	 
 		)
 	}

@@ -46,6 +46,7 @@ class ContentList extends React.Component{
 		articleList.forEach(function(result){
 			if(result.createdate.indexOf(year)==-1){
 				if(num!=0){
+					list+='<span class="time_end"></span>';
 					list+='</ul>';
 					list+='</div>';
 				}	
@@ -53,14 +54,16 @@ class ContentList extends React.Component{
 				list+='<div class="mod-archive__item">';
 				list+='<div id='+year+' class="mod-archive__year">'+year+'</div>';
 				list+='<ul class="mod-archive__list">';
+				list+='<span class="time_start"></span>';
 				num++;
 			}
 			list+='<li>';
-			list+='<time class="mod-archive__time">'+result.createdate+'</time>';
-			list+='<span>—</span>';
+			list+='<h5 class="mod-archive__time">'+result.createdate.substring(5,10)+'</h5>';
+			list+='<span></span>';
 			list+='<a href=#/article/'+result._id+'>'+result.title+'</a>';
 			list+='</li>';									
 		});
+		list+='<span class="time_end"></span>';
 		list+='</ul>';
 		list+='</div>';
 		return list
