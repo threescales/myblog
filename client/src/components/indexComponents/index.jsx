@@ -10,7 +10,7 @@ class Index extends React.Component{
 	render(){
         var footer = <Footer />
 		return(
-		    <div className="center willerce">
+		    <div className="willerce">
       			<img className="avatar" src={touxiang} />
                 <h1>张有明</h1>
                 <p>工作 @ 北京小牛微微信息技术有限公司

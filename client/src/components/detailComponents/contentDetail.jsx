@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../publicComponents/header.jsx';
-import Clock from '../publicComponents/clock.jsx';
+import Introduction from '../publicComponents/introduction.jsx';
+import Cat from '../publicComponents/cat.jsx';
 import Comment from '../commentComponents/comment.jsx';
 import touxiang from '../../img/touxiang.jpg';
 import youke from '../../img/youke.png';
@@ -66,14 +67,15 @@ class ContentDetail extends React.Component{
 	
 	render(){
 		var header =  <Header />;
-		var clock = <Clock />
+		var introduction = <Introduction />;
+		var cat = <Cat />;
 		var article = this.state.article;
 		var comment = <Comment parentComponent={this}/>;
 		var that = this;
 		return(
 			<div>
 				<div className="left">
-				{clock}
+				{cat}
 				</div>
 				<div className="center">
 					{header}
@@ -118,6 +120,9 @@ class ContentDetail extends React.Component{
 				<input type="hidden" id="commentFlag" value="0" />
 				<input type="hidden" id="toCommentId" value="" />
 				<input type="hidden" id="toUserName" value="" />
+			</div>
+			<div className="right">
+				
 			</div>
 		</div>
 		)

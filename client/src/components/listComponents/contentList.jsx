@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../publicComponents/header.jsx';
-import Clock from '../publicComponents/clock.jsx';
+import Introduction from '../publicComponents/introduction.jsx';
+import Cat from '../publicComponents/cat.jsx';
 import axios from 'axios';
 import qs from 'qs';
 
@@ -99,17 +100,21 @@ class ContentList extends React.Component{
 	
 	render(){
 		var header =  <Header parentComponent={this} />;
-		var clock = <Clock />
+		var introduction = <Introduction />;
+		var cat = <Cat />;
 		var articleList = this.getArticlesList();
 		return(
 			<div>
 				<div className="left">
-					{clock}
+					{cat}
 				</div>
 				<div className="center">
 					{header}
 					<article className="mod-archive" dangerouslySetInnerHTML={{__html: articleList}}>
 					</article>
+				</div>
+				<div className="right">
+					
 				</div>
 			</div>
 		)
