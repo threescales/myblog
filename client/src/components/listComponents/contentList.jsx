@@ -106,7 +106,7 @@ class ContentList extends React.Component{
 		return(
 			<div>
 				<div className="left">
-					{cat}
+					
 				</div>
 				<div className="center">
 					{header}
@@ -114,7 +114,7 @@ class ContentList extends React.Component{
 					</article>
 				</div>
 				<div className="right">
-					
+					{cat}
 				</div>
 			</div>
 		)

@@ -8,6 +8,7 @@ $white:#fff;
 $placeholder-color:#000;
 $center-width:900px;
 $index-width:500px;
+$hidden-width:1760px;
 $content-font-family:"Source Code Pro", monospace;
 * {
 	margin: 0;
@@ -36,7 +37,20 @@ body {
 	}
 }
 
-@media(max-width:900px){
+.left{
+		float: left;
+		width:500px;
+}
+.right{
+		float: right;
+		width: 500px;
+}
+.center{
+	max-width: $center-width;
+	padding:0 20px;
+	margin:0 auto;
+}
+@media(max-width:$hidden-width){
 	.left{
 		float: left;
 		display: none;	
@@ -61,21 +75,6 @@ body {
 		}
 	}
 }
-.left{
-		float: left;
-		width:500px;
-}
-.right{
-		float: right;
-		width: 500px;
-}
-.center{
-	max-width: $center-width;
-	padding:0 20px;
-	margin:0 auto;
-	float: left;
-}
-
 h1 {
 	font-size: 26px;
 	color: $init-color;
@@ -644,11 +643,16 @@ a {
 }
 /*猫咪*/
 .mao_box {
-    position: relative;
+    position: fixed;
     top: 100px;
+	right:30px;
     /*width:424px;*/
 }
-
+@media(max-width:$hidden-width){
+	.mao_box {
+		display: none;
+	}
+}
 .mao {
     margin: 0 auto;
     width: 400px;

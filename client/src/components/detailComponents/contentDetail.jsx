@@ -75,7 +75,7 @@ class ContentDetail extends React.Component{
 		return(
 			<div>
 				<div className="left">
-				{cat}
+				
 				</div>
 				<div className="center">
 					{header}
@@ -122,7 +122,7 @@ class ContentDetail extends React.Component{
 				<input type="hidden" id="toUserName" value="" />
 			</div>
 			<div className="right">
-				
+				{cat}
 			</div>
 		</div>
 		)
