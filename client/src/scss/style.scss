@@ -641,6 +641,13 @@ a {
 .back {
 	transform: rotateY(180deg);
 }
+@mixin myrotate($rotate){
+        transform: rotate($rotate);
+        -ms-transform: rotate(-$rotate);
+        -moz-transform: rotate($rotate);
+        -webkit-transform: rotate($rotate);
+        -o-transform: rotate($rotate);
+}
 /*猫咪*/
 .mao_box {
     position: fixed;
@@ -700,11 +707,7 @@ a {
         width: 160px;
         border: 2px solid #2e2e2e;
         background: #f3f3f3;
-        transform: rotate(-15deg);
-        -ms-transform: rotate(-15deg);
-        -moz-transform: rotate(-15deg);
-        -webkit-transform: rotate(-15deg);
-        -o-transform: rotate(-15deg);
+		@include myrotate(-15deg);
         border-radius: 4% 80% 0% 50%;
         position: absolute;
         left: -20px;
@@ -717,11 +720,7 @@ a {
         width: 160px;
         border: 2px solid #2e2e2e;
         background: #f3f3f3;
-        transform: rotate(15deg);
-        -ms-transform: rotate(15deg);
-        -moz-transform: rotate(15deg);
-        -webkit-transform: rotate(15deg);
-        -o-transform: rotate(15deg);
+        @include myrotate(15deg);
         border-radius: 80% 4% 50% 0%;
         position: absolute;
         right: -20px;
@@ -735,22 +734,14 @@ a {
 .mao:hover .erduo {
 	> div:first-child {
 		left: -10px;
-		transform: rotate(0deg);
-		-ms-transform: rotate(0deg);
-		-moz-transform: rotate(0deg);
-		-webkit-transform: rotate(0deg);
-		-o-transform: rotate(0deg);
+		@include myrotate(0deg);
 		border-radius: 4% 80% 0% 60%;
 		/*transition: all 1s;*/
 		/*transition: transform 1s,left 1s;*/
 	}
 	> div:last-child {
 		right: -10px;
-		transform: rotate(0deg);
-		-ms-transform: rotate(0deg);
-		-moz-transform: rotate(0deg);
-		-webkit-transform: rotate(0deg);
-		-o-transform: rotate(0deg);
+		@include myrotate(0deg);
 		border-radius: 80% 4% 60% 0%;
 		/*transition: transform 1s,right 1s;*/
 	}
@@ -857,11 +848,7 @@ a {
 		height: 10px;
 		border-top: 6px #E53941 solid;
 		border-radius: 30% 80% 20% 50%;
-		transform: rotate(25deg);
-		-ms-transform: rotate(25deg);
-		-moz-transform: rotate(25deg);
-		-webkit-transform: rotate(25deg);
-		-o-transform: rotate(25deg);
+		@include myrotate(25deg);
 		margin-left: 20px;
 	}
 	> div:nth-child(2) {
@@ -869,11 +856,7 @@ a {
 		height: 6px;
 		background-color: #E53941;
 		border-radius: 50% 50% 50% 50%;
-		transform: rotate(25deg);
-		-ms-transform: rotate(25deg);
-		-moz-transform: rotate(25deg);
-		-webkit-transform: rotate(25deg);
-		-o-transform: rotate(25deg);
+		@include myrotate(25deg);
 		margin-left: 20px;
 	}
 	> div:nth-child(3) {
@@ -882,11 +865,7 @@ a {
 		height: 10px;
 		border-bottom: 4px #E53941 solid;
 		border-radius: 30% 0% 90% 30%;
-		transform: rotate(25deg);
-		-ms-transform: rotate(25deg);
-		-moz-transform: rotate(25deg);
-		-webkit-transform: rotate(25deg);
-		-o-transform: rotate(25deg);
+		@include myrotate(25deg);
 		margin-left: 8px;
 	}
 	> div:nth-child(4) {
@@ -895,11 +874,7 @@ a {
 		height: 20px;
 		border-bottom: 4px #E53941 solid;
 		border-radius: 30% 0% 90% 30%;
-		transform: rotate(30deg);
-		-ms-transform: rotate(30deg);
-		-moz-transform: rotate(30deg);
-		-webkit-transform: rotate(30deg);
-		-o-transform: rotate(30deg);
+		@include myrotate(30deg);
 		margin-left: 28px;
 	}
 	> div:last-child {
@@ -907,11 +882,7 @@ a {
 		height: 10px;
 		border-bottom: 3px #E53941 solid;
 		border-radius: 0% 0% 50% 50%;
-		transform: rotate(-15deg);
-		-ms-transform: rotate(-15deg);
-		-moz-transform: rotate(-15deg);
-		-webkit-transform: rotate(-15deg);
-		-o-transform: rotate(-15deg);
+		@include myrotate(-15deg);
 		margin-left: 40px;
 		margin-top: -8px;
 	}
@@ -1012,11 +983,7 @@ a {
     -moz-border-radius: 50% 50% 50% 0;
     -o-border-radius: 50% 50% 50% 0;
     border-radius: 50% 50% 50% 0;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    @include myrotate(-45deg);
     margin: 1px 4px 7px;
     border: 2px solid;
 }
