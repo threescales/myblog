@@ -678,13 +678,12 @@ a {
     left: 110px;
     border-radius: 0% 0% 50% 50%;
     overflow: hidden;
-}
-
-    .huawen > div:first-child {
+	> div:first-child {
         height: 160px;
         width: 90px;
         background: #F0AC6B;
     }
+}
 
 /*耳朵*/
 .erduo {
@@ -695,9 +694,8 @@ a {
     left: 50%;
     margin-left: -187px;
     border-radius: 0% 0% 0% 0%;
-}
-    /*左耳*/
-    .erduo > div:first-child {
+	    /*左耳*/
+	> div:first-child {
         height: 200px;
         width: 160px;
         border: 2px solid #2e2e2e;
@@ -713,8 +711,8 @@ a {
         top: 0px;
         transition: transform 1s,left 1s;
     }
-    /*右耳*/
-    .erduo > div:last-child {
+	    /*右耳*/
+	> div:last-child {
         height: 180px;
         width: 160px;
         border: 2px solid #2e2e2e;
@@ -730,30 +728,34 @@ a {
         top: 0px;
           transition: transform 1s,right 1s;
     }
-/*鼠标浮动耳朵样式*/
-/*左耳*/
-.mao:hover .erduo > div:first-child {
-    left: -10px;
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    border-radius: 4% 80% 0% 60%;
-    /*transition: all 1s;*/
-     /*transition: transform 1s,left 1s;*/
 }
 
-.mao:hover .erduo > div:last-child {
-    right: -10px;
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    border-radius: 80% 4% 60% 0%;
-    /*transition: transform 1s,right 1s;*/
+/*鼠标浮动耳朵样式*/
+/*左耳*/
+.mao:hover .erduo {
+	> div:first-child {
+		left: -10px;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		border-radius: 4% 80% 0% 60%;
+		/*transition: all 1s;*/
+		/*transition: transform 1s,left 1s;*/
+	}
+	> div:last-child {
+		right: -10px;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		border-radius: 80% 4% 60% 0%;
+		/*transition: transform 1s,right 1s;*/
+	}
 }
+
 /*眼睛*/
 .yanjing {
     height: 60px;
@@ -773,9 +775,8 @@ a {
     border-radius: 50% 50% 50% 50%;
     overflow: hidden;
     position: absolute;
-}
-    /*眼珠子 左*/
-    .yanquan > div:first-child {
+	 /*眼珠子 左*/
+	> div:first-child {
         height: 100px;
         width: 30px;
         background-color: #2e2e2e;
@@ -784,6 +785,8 @@ a {
           /*transition-property: width;
        transition-duration: 2s;*/
     }
+}
+
 .mao:hover .yanquan > div:first-child {
   width:40px;
     margin-left: 30px;
@@ -848,73 +851,72 @@ a {
     margin-left: -190px;
 }
 
-.face_huawen_huawen > div:first-child {
-    width: 30px;
-    height: 10px;
-    border-top: 6px #E53941 solid;
-    border-radius: 30% 80% 20% 50%;
-    transform: rotate(25deg);
-    -ms-transform: rotate(25deg);
-    -moz-transform: rotate(25deg);
-    -webkit-transform: rotate(25deg);
-    -o-transform: rotate(25deg);
-    margin-left: 20px;
+.face_huawen_huawen {
+	> div:first-child {
+		width: 30px;
+		height: 10px;
+		border-top: 6px #E53941 solid;
+		border-radius: 30% 80% 20% 50%;
+		transform: rotate(25deg);
+		-ms-transform: rotate(25deg);
+		-moz-transform: rotate(25deg);
+		-webkit-transform: rotate(25deg);
+		-o-transform: rotate(25deg);
+		margin-left: 20px;
+	}
+	> div:nth-child(2) {
+		width: 20px;
+		height: 6px;
+		background-color: #E53941;
+		border-radius: 50% 50% 50% 50%;
+		transform: rotate(25deg);
+		-ms-transform: rotate(25deg);
+		-moz-transform: rotate(25deg);
+		-webkit-transform: rotate(25deg);
+		-o-transform: rotate(25deg);
+		margin-left: 20px;
+	}
+	> div:nth-child(3) {
+		/*margin-top:10px;*/
+		width: 32px;
+		height: 10px;
+		border-bottom: 4px #E53941 solid;
+		border-radius: 30% 0% 90% 30%;
+		transform: rotate(25deg);
+		-ms-transform: rotate(25deg);
+		-moz-transform: rotate(25deg);
+		-webkit-transform: rotate(25deg);
+		-o-transform: rotate(25deg);
+		margin-left: 8px;
+	}
+	> div:nth-child(4) {
+		margin-top: 36px;
+		width: 26px;
+		height: 20px;
+		border-bottom: 4px #E53941 solid;
+		border-radius: 30% 0% 90% 30%;
+		transform: rotate(30deg);
+		-ms-transform: rotate(30deg);
+		-moz-transform: rotate(30deg);
+		-webkit-transform: rotate(30deg);
+		-o-transform: rotate(30deg);
+		margin-left: 28px;
+	}
+	> div:last-child {
+		width: 22px;
+		height: 10px;
+		border-bottom: 3px #E53941 solid;
+		border-radius: 0% 0% 50% 50%;
+		transform: rotate(-15deg);
+		-ms-transform: rotate(-15deg);
+		-moz-transform: rotate(-15deg);
+		-webkit-transform: rotate(-15deg);
+		-o-transform: rotate(-15deg);
+		margin-left: 40px;
+		margin-top: -8px;
+	}
 }
 
-.face_huawen_huawen > div:nth-child(2) {
-    width: 20px;
-    height: 6px;
-    background-color: #E53941;
-    border-radius: 50% 50% 50% 50%;
-    transform: rotate(25deg);
-    -ms-transform: rotate(25deg);
-    -moz-transform: rotate(25deg);
-    -webkit-transform: rotate(25deg);
-    -o-transform: rotate(25deg);
-    margin-left: 20px;
-}
-
-.face_huawen_huawen > div:nth-child(3) {
-    /*margin-top:10px;*/
-    width: 32px;
-    height: 10px;
-    border-bottom: 4px #E53941 solid;
-    border-radius: 30% 0% 90% 30%;
-    transform: rotate(25deg);
-    -ms-transform: rotate(25deg);
-    -moz-transform: rotate(25deg);
-    -webkit-transform: rotate(25deg);
-    -o-transform: rotate(25deg);
-    margin-left: 8px;
-}
-
-.face_huawen_huawen > div:nth-child(4) {
-    margin-top: 36px;
-    width: 26px;
-    height: 20px;
-    border-bottom: 4px #E53941 solid;
-    border-radius: 30% 0% 90% 30%;
-    transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
-    -webkit-transform: rotate(30deg);
-    -o-transform: rotate(30deg);
-    margin-left: 28px;
-}
-
-.face_huawen_huawen > div:last-child {
-    width: 22px;
-    height: 10px;
-    border-bottom: 3px #E53941 solid;
-    border-radius: 0% 0% 50% 50%;
-    transform: rotate(-15deg);
-    -ms-transform: rotate(-15deg);
-    -moz-transform: rotate(-15deg);
-    -webkit-transform: rotate(-15deg);
-    -o-transform: rotate(-15deg);
-    margin-left: 40px;
-    margin-top: -8px;
-}
 /*右边花纹*/
 .huawen_right {
     float: right;
@@ -932,15 +934,14 @@ a {
     margin-left: -15px;
     top: 260px;
     z-index: 30;
-}
-
-    .bizi > div:first-child {
+	> div:first-child {
         width: 30px;
         height: 10px;
         border-bottom: 8px solid #2e2e2e;
         border-radius: 0% 0% 50% 50%;
         margin-top: -10px;
     }
+}
 
 .zuiba_box {
     width: 200px;
@@ -956,16 +957,14 @@ a {
 .zuiba {
     margin-left: 85px;
     margin-top: 6px;
-}
-
-    .zuiba > div:first-child {
+	> div:first-child {
         width: 4px;
         height: 8px;
         background: #2e2e2e;
         margin-left: 13px;
     }
-    /*右半边嘴巴*/
-    .zuiba > div:nth-child(2) {
+	/*右半边嘴巴*/
+	> div:nth-child(2) {
         width: 50px;
         height: 40px;
         border-bottom: 4px solid #2e2e2e;
@@ -976,8 +975,8 @@ a {
         position:absolute;
             transition:  border-radius  1s;
     }
-    /*左半边嘴巴*/
-    .zuiba > div:nth-child(3) {
+	 /*左半边嘴巴*/
+    > div:nth-child(3) {
         width: 50px;
         height: 40px;
         border-bottom: 4px solid #2e2e2e;
@@ -986,22 +985,23 @@ a {
         margin-left: -38px;
         margin-top: -26px;
         position:absolute;
-            transition:  border-radius  1s;
-       
+        transition:  border-radius  1s;     
     }
+}
 
-.mao:hover .zuiba > div:nth-child(2) {
-    border-radius: 50% 50% 50% 50%;
-          width: 40px;
-           /*transition:  border-radius  1s ;*/
-}
-.mao:hover .zuiba > div:nth-child(3) {
-   
+.mao:hover .zuiba {
+	> div:nth-child(2) {
+    	border-radius: 50% 50% 50% 50%;
+        width: 40px;
+	}
+	> div:nth-child(3) {  
          width: 40px;
-          margin-left: -30px;
-          border-radius: 50% 50% 50% 50%;
-          /*transition:  border-radius  1s;*/
+         margin-left: -30px;
+         border-radius: 50% 50% 50% 50%;
+         /*transition:  border-radius  1s;*/
+	}
 }
+
 .qingchu{
 	clear: both;
 }
