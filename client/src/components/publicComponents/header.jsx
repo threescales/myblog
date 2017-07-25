@@ -8,7 +8,8 @@ class Header extends React.Component{
 	
 	render(){
 		return(
-		<header className="mod-head"  id="pageHeader">			
+		<header className="mod-head"  id="pageHeader">
+			<div className="center">		
 			<h1 className="mod-head__title">
 				<a href="#">张有明</a>
 			</h1>
@@ -37,6 +38,7 @@ class Header extends React.Component{
 					</li>
 				</ul>
 			</nav>
+			</div>
 		</header>	
 		)
 	}

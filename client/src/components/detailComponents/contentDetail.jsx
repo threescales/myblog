@@ -74,11 +74,8 @@ class ContentDetail extends React.Component{
 		var that = this;
 		return(
 			<div>
-				<div className="left">
-				
-				</div>
+				{header}
 				<div className="center">
-					{header}
 					<article className="mod-archive">
 						<header>
 							<h1 className="mod-post__title">{article.title}</h1>
@@ -120,9 +117,6 @@ class ContentDetail extends React.Component{
 				<input type="hidden" id="commentFlag" value="0" />
 				<input type="hidden" id="toCommentId" value="" />
 				<input type="hidden" id="toUserName" value="" />
-			</div>
-			<div className="right">
-				{cat}
 			</div>
 		</div>
 		)

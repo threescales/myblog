@@ -12,7 +12,7 @@ var errorHandler = require('errorhandler');
 var app = express();
 
 // 设置80端口
-app.set('port', process.env.PORT || 80);
+app.set('port', 8080);
 
 //一些中间件
 app.use(compression());  

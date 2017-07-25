@@ -361,7 +361,8 @@ ol ol {
 .hljs-dark .hljs {
 	display: block;
 	padding: .5em;
-	background: #23241f
+	background: #23241f;
+	border-radius: 10px;
 }
 
 .hljs-dark .hljs,

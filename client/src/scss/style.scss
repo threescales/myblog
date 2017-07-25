@@ -1,14 +1,15 @@
 $background:#212325;
-$init-color:#fefefe;
+$init-color:#333;
 $qianwight:#efefef;
-$a-color:#cecece;
-$article-title:#99cc33;
+$a-color:#333;
+$article-title:#333;
 $border:1px solid #555;
 $white:#fff;
 $placeholder-color:#000;
 $center-width:900px;
 $index-width:500px;
 $hidden-width:1760px;
+$phone-width:475px;
 $content-font-family:"Source Code Pro", monospace;
 * {
 	margin: 0;
@@ -20,7 +21,7 @@ body {
 	font: 400 16px/1.62 $content-font-family;
 	color: $init-color;
 	overflow: hidden;
-	background-color:$background;	
+	background:url("../img/bg_mat.jpg") #e9d6b7;	
 	overflow-x: hidden;
     overflow-y: auto;
 }
@@ -49,6 +50,9 @@ body {
 	max-width: $center-width;
 	padding:0 20px;
 	margin:0 auto;
+	@media(max-width:$phone-width){
+		padding: 0px;
+	}
 }
 @media(max-width:$hidden-width){
 	.left{
@@ -83,7 +87,7 @@ h1 {
 
 h3 {
     display: block;
-	color: #e85d01;
+	color: $article-title;
     font-size: 1.17em;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
@@ -157,7 +161,7 @@ a {
 
 .nav a {
 	padding: 0 6px 0 6px;
-	color: #e6b33d;
+	color: $init-color;
 	text-decoration: underline;
 }
 
@@ -166,11 +170,15 @@ a {
 	position: fixed;
 	top: 0px;
 	margin-bottom: 60px;
-	background: $background;
+	background:url('../img/bg.jpg');
 	width: 100%;
     height: 64px;
     padding-top: 20px;
 	z-index: 10;
+	.center{
+		max-width: $center-width;
+		margin: 0 auto;
+	}
 }
 
 .mod-head__title {
@@ -196,7 +204,7 @@ a {
 		padding: 0px 10px;
 	}
 	a {
-		color: #e6b33d;
+		color: $init-color;
 	}
 }
 
@@ -215,19 +223,32 @@ a {
 /**文章列表**/
 .mod-archive {
 	@include fadeIn(1s);
-	margin-top: 124px;
+	margin-top: 84px;
+	padding: 60px;
+    background: rgba(255, 255, 255, 0.7);
+	@media screen and(max-width:475px){
+		padding:10px;
+	}
 }
-
+.list-content{
+	@include fadeIn(1s);
+	margin-top: 84px;
+	padding: 60px;
+	@media screen and(max-width:475px){
+		padding:10px;
+	}
+}
 .mod-archive__list{
 	margin-left:30px;
 	height: 100%;
 	width:100%;
+	color: #fff;
 	li {
 		line-height: 50px;
 		margin-bottom: 8px;
 		span{
 			margin-left: 59px;
-    		border-left: 1px solid #636c71;
+    		border-left: 1px solid #fff;
     		height: 70px;
     		position: absolute;
 		}
@@ -246,12 +267,12 @@ a {
 }
 
 .mod-archive__time {
-	color: #efefef;
+	color: $init-color;
     font-family: Arial,Helvetica,宋体;
     font-size: 14px;
-    width: 160px;
+    width: 100px;
     position: relative;
-    background: #000000;
+    background: #fff;
     left: 30px;
     text-align: center;
     float: left;
@@ -264,7 +285,7 @@ a {
 		top:15px;
 		width:5px;
 		height:0px;
-		border-bottom:1px solid #636c71;
+		border-bottom:1px solid #fff;
 	}
 	&:after{
 		content:"";
@@ -275,7 +296,7 @@ a {
 		height:0px;
 		border-width:8px;;
 		border-style:solid;
-		border-color:transparent transparent transparent #000000;
+		border-color:transparent transparent transparent #fff;
 	}
 }
 .time_start,
@@ -285,10 +306,10 @@ a {
 	position:relative;
 	width:8px;
 	height:8px;
-	background:#42b7f0;
+	background:#fff;
 	border:2px solid #fff;
 	border-radius:100px;
-	left:216px;
+	left:156px;
 }
 .time_end{bottom:-4px;}
 
@@ -302,7 +323,7 @@ a {
 			margin-bottom: 8px;
 			span{
 				margin-left: 59px;
-				border-left: 1px solid #636c71;
+				border-left: 1px solid #fff;
 				height: 50px;
 				position: absolute;
 			}

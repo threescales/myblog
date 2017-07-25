@@ -54,7 +54,7 @@
     "morgan": "^1.6.1",
     "multer": "^1.1.0",
     "serve-favicon": "^2.0.1",
-    "mongoose":"^4.6.6",
+    "mongoose":"4.6.6",
     "bluebird":"^3.4.6",
     "fetch":"^1.1.0",
     "moment":"^2.10.6",

@@ -105,16 +105,10 @@ class ContentList extends React.Component{
 		var articleList = this.getArticlesList();
 		return(
 			<div>
-				<div className="left">
-					
-				</div>
+				{header}
 				<div className="center">
-					{header}
-					<article className="mod-archive" dangerouslySetInnerHTML={{__html: articleList}}>
+					<article className="list-content" dangerouslySetInnerHTML={{__html: articleList}}>
 					</article>
-				</div>
-				<div className="right">
-					{cat}
 				</div>
 			</div>
 		)

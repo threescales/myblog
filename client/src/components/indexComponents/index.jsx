@@ -13,7 +13,7 @@ class Index extends React.Component{
 		    <div className="willerce">
       			<img className="avatar" src={touxiang} />
                 <h1>张有明</h1>
-                <p>工作 @ 北京小牛微微信息技术有限公司
+                <p>工作 @ 可明互联有限公司
                     <a className="about" href="/myself/index.html">About Me</a>
                 </p>
                 <p className="address">
