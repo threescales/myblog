@@ -2,382 +2,253 @@ code,
 kbd,
 pre,
 samp {
-	font-family: "Source Code Pro", monospace
+    font-family: "Source Code Pro", monospace
 }
 
 code {
-	padding: 2px 4px;
-	font-size: 90%;
-	color: #2c3f51;
-	background-color: rgba(102, 128, 153, 0.075);
-	white-space: nowrap;
-	border-radius: 4px
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #2c3f51;
+    background-color: rgba(102, 128, 153, 0.075);
+    white-space: nowrap;
+    border-radius: 4px
 }
 
 pre {
-	display: block;
-	padding: 10px;
-	margin: 0 0 10.5px;
-	font-size: 14px;
-	line-height: 1.45;
-	word-break: break-all;
-	word-wrap: break-word;
-	color: #333;
-	background-color: rgba(102, 128, 153, 0.05);
-	border: 1px solid rgba(102, 128, 153, 0.075);
-	border-radius: 4px
+    display: block;
+    padding: 10px;
+    margin: 0 0 10.5px;
+    font-size: 14px;
+    line-height: 1.45;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #333;
+    background-color: rgba(102, 128, 153, 0.05);
+    border: 1px solid rgba(102, 128, 153, 0.075);
+    border-radius: 4px
 }
 
 pre code {
-	padding: 0;
-	font-size: inherit;
-	color: inherit;
-	white-space: pre-wrap;
-	background-color: transparent;
-	border-radius: 0
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0
 }
 
 .pre-scrollable {
-	max-height: 340px;
-	overflow-y: scroll
+    max-height: 340px;
+    overflow-y: scroll
 }
 
 .pln {
-	color: #000
+    color: #000
 }
 
 .str {
-	color: #080
+    color: #080
 }
 
 .kwd {
-	color: #008
+    color: #008
 }
 
 .com {
-	color: #800
+    color: #800
 }
 
 .typ {
-	color: #606
+    color: #606
 }
 
 .lit {
-	color: #066
+    color: #066
 }
 
 .pun,
 .opn,
 .clo {
-	color: #660
+    color: #660
 }
 
 .tag {
-	color: #008
+    color: #008
 }
 
 .atn {
-	color: #606
+    color: #606
 }
 
 .atv {
-	color: #080
+    color: #080
 }
 
 .dec,
 .var {
-	color: #606
+    color: #606
 }
 
 .fun {
-	color: #f00
+    color: #f00
 }
 
 pre.prettyprint {
-	padding: 0;
-	border: 0
-}
-
-
-@font-face {
-	font-family: 'fontello';
-	src: url('../font/fontello.woff?1475517510197') format('woff');
-	font-weight: normal;
-	font-style: normal
+    padding: 0;
+    border: 0
 }
 
 @font-face {
-	font-family: 'Source Code Pro';
-	font-style: normal;
-	font-weight: 400;
-	src: local('Source Code Pro'), local('SourceCodePro-Regular'), url("../font/SourceCodePro-Regular-webfont.woff") format('woff')
+    font-family: 'fontello';
+    src: url('../font/fontello.woff?1475517510197') format('woff');
+    font-weight: normal;
+    font-style: normal
 }
 
 @font-face {
-	font-family: 'Source Code Pro';
-	font-style: normal;
-	font-weight: 700;
-	src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url("../font/SourceCodePro-Bold-webfont.woff") format('woff')
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Code Pro'), local('SourceCodePro-Regular'), url("../font/SourceCodePro-Regular-webfont.woff") format('woff')
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url("../font/SourceCodePro-Bold-webfont.woff") format('woff')
 }
 
 code,
 pre {
-	font-family: "Source Code Pro", monospace;
-	font-size: .9em
+    font-family: "Source Code Pro", monospace;
+    font-size: .9em
 }
 
 code {
-	white-space: normal
+    white-space: normal
 }
 
 pre,
 pre.prettyprint {
-	text-align: start;
-	border: 0;
-	border-radius: 5px;
-	word-break: break-all
+    text-align: start;
+    border: 0;
+    border-radius: 5px;
+    word-break: break-all;
+    position: relative;
+    margin-bottom: 14px;
+    padding: 30px 14px 14px;
+    border: none;
+    border-radius: 0;
+    overflow: auto;
 }
 
 pre code,
 pre.prettyprint code {
-	padding: 1.3em 2em !important
+    padding: 1.3em 2em !important
 }
 
 pre.prettyprint.with-line-number {
-	position: relative
+    position: relative
 }
 
 pre.prettyprint.with-line-number code {
-	padding-left: 3.3em !important
+    padding-left: 3.3em !important
 }
 
 pre.prettyprint.with-line-number .hljs-comment.line-number {
-	min-width: 2.2em;
-	display: inline-block;
-	text-align: right;
-	opacity: .8;
-	position: absolute;
-	left: .3em
+    min-width: 2.2em;
+    display: inline-block;
+    text-align: right;
+    opacity: .8;
+    position: absolute;
+    left: .3em
 }
 
 .hljs-comment.line-number {
-	display: none
+    display: none
 }
 
 dt,
 dd {
-	margin-top: 5px;
-	margin-bottom: 5px
+    margin-top: 5px;
+    margin-bottom: 5px
 }
 
 dd {
-	margin-left: 40px
+    margin-left: 40px
 }
 
 blockquote {
-	border-left-width: 10px;
-	background-color: rgba(102, 128, 153, 0.05);
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	padding: 15px 20px
+    border-left-width: 10px;
+    background-color: rgba(102, 128, 153, 0.05);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 15px 20px
 }
 
 blockquote p {
-	margin-bottom: 1.1em;
-	font-size: 1em;
-	line-height: 1.45
+    margin-bottom: 1.1em;
+    font-size: 1em;
+    line-height: 1.45
 }
 
 blockquote ul:last-child,
 blockquote ol:last-child {
-	margin-bottom: 0
+    margin-bottom: 0
 }
 
 ul,
 ol {
-	margin-bottom: 1.1em
+    margin-bottom: 1.1em
 }
 
 ul ul,
 ol ul,
 ul ol,
 ol ol {
-	margin-bottom: 1.1em
-}
-
-.hljs-light .hljs {
-	display: block;
-	padding: .5em;
-	background-color: #f0f0f0
-}
-
-.hljs-light .hljs,
-.hljs-light .hljs-subst,
-.hljs-light .hljs-tag .hljs-title,
-.hljs-light .lisp .hljs-title,
-.hljs-light .clojure .hljs-built_in,
-.hljs-light .nginx .hljs-title {
-	color: #000
-}
-
-.hljs-light .hljs-string,
-.hljs-light .hljs-title,
-.hljs-light .hljs-constant,
-.hljs-light .hljs-parent,
-.hljs-light .hljs-tag .hljs-value,
-.hljs-light .hljs-rules .hljs-value,
-.hljs-light .hljs-rules .hljs-value .hljs-number,
-.hljs-light .hljs-preprocessor,
-.hljs-light .hljs-pragma,
-.hljs-light .haml .hljs-symbol,
-.hljs-light .ruby .hljs-symbol,
-.hljs-light .ruby .hljs-symbol .hljs-string,
-.hljs-light .hljs-aggregate,
-.hljs-light .hljs-template_tag,
-.hljs-light .django .hljs-variable,
-.hljs-light .smalltalk .hljs-class,
-.hljs-light .hljs-addition,
-.hljs-light .hljs-flow,
-.hljs-light .hljs-stream,
-.hljs-light .bash .hljs-variable,
-.hljs-light .apache .hljs-tag,
-.hljs-light .apache .hljs-cbracket,
-.hljs-light .tex .hljs-command,
-.hljs-light .tex .hljs-special,
-.hljs-light .erlang_repl .hljs-function_or_atom,
-.hljs-light .asciidoc .hljs-header,
-.hljs-light .markdown .hljs-header,
-.hljs-light .coffeescript .hljs-attribute {
-	color: #800
-}
-
-.hljs-light .smartquote,
-.hljs-light .hljs-comment,
-.hljs-light .hljs-annotation,
-.hljs-light .hljs-template_comment,
-.hljs-light .diff .hljs-header,
-.hljs-light .hljs-chunk,
-.hljs-light .asciidoc .hljs-blockquote,
-.hljs-light .markdown .hljs-blockquote {
-	color: #888
-}
-
-.hljs-light .hljs-number,
-.hljs-light .hljs-date,
-.hljs-light .hljs-regexp,
-.hljs-light .hljs-literal,
-.hljs-light .hljs-hexcolor,
-.hljs-light .smalltalk .hljs-symbol,
-.hljs-light .smalltalk .hljs-char,
-.hljs-light .go .hljs-constant,
-.hljs-light .hljs-change,
-.hljs-light .lasso .hljs-variable,
-.hljs-light .makefile .hljs-variable,
-.hljs-light .asciidoc .hljs-bullet,
-.hljs-light .markdown .hljs-bullet,
-.hljs-light .asciidoc .hljs-link_url,
-.hljs-light .markdown .hljs-link_url {
-	color: #080
-}
-
-.hljs-light .hljs-label,
-.hljs-light .hljs-javadoc,
-.hljs-light .ruby .hljs-string,
-.hljs-light .hljs-decorator,
-.hljs-light .hljs-filter .hljs-argument,
-.hljs-light .hljs-localvars,
-.hljs-light .hljs-array,
-.hljs-light .hljs-attr_selector,
-.hljs-light .hljs-important,
-.hljs-light .hljs-pseudo,
-.hljs-light .hljs-pi,
-.hljs-light .haml .hljs-bullet,
-.hljs-light .hljs-doctype,
-.hljs-light .hljs-deletion,
-.hljs-light .hljs-envvar,
-.hljs-light .hljs-shebang,
-.hljs-light .apache .hljs-sqbracket,
-.hljs-light .nginx .hljs-built_in,
-.hljs-light .tex .hljs-formula,
-.hljs-light .erlang_repl .hljs-reserved,
-.hljs-light .hljs-prompt,
-.hljs-light .asciidoc .hljs-link_label,
-.hljs-light .markdown .hljs-link_label,
-.hljs-light .vhdl .hljs-attribute,
-.hljs-light .clojure .hljs-attribute,
-.hljs-light .asciidoc .hljs-attribute,
-.hljs-light .lasso .hljs-attribute,
-.hljs-light .coffeescript .hljs-property,
-.hljs-light .hljs-phony {
-	color: #88f
-}
-
-.hljs-light .hljs-keyword,
-.hljs-light .hljs-id,
-.hljs-light .hljs-title,
-.hljs-light .hljs-built_in,
-.hljs-light .hljs-aggregate,
-.hljs-light .css .hljs-tag,
-.hljs-light .hljs-javadoctag,
-.hljs-light .hljs-phpdoc,
-.hljs-light .hljs-yardoctag,
-.hljs-light .smalltalk .hljs-class,
-.hljs-light .hljs-winutils,
-.hljs-light .bash .hljs-variable,
-.hljs-light .apache .hljs-tag,
-.hljs-light .go .hljs-typename,
-.hljs-light .tex .hljs-command,
-.hljs-light .asciidoc .hljs-strong,
-.hljs-light .markdown .hljs-strong,
-.hljs-light .hljs-request,
-.hljs-light .hljs-status {
-	font-weight: bold
-}
-
-.hljs-light .asciidoc .hljs-emphasis,
-.hljs-light .markdown .hljs-emphasis {
-	font-style: italic
-}
-
-.hljs-light .nginx .hljs-built_in {
-	font-weight: normal
-}
-
-.hljs-light .coffeescript .javascript,
-.hljs-light .javascript .xml,
-.hljs-light .lasso .markup,
-.hljs-light .tex .hljs-formula,
-.hljs-light .xml .javascript,
-.hljs-light .xml .vbscript,
-.hljs-light .xml .css,
-.hljs-light .xml .hljs-cdata {
-	opacity: .5
+    margin-bottom: 1.1em
 }
 
 .hljs-dark {
-	background: #f6f6f6
+    background: #f8f5ec;
 }
 
 .hljs-dark .hljs {
-	display: block;
-	padding: .5em;
-	background: #23241f;
-	border-radius: 10px;
+    display: block;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border: 0;
+    float: left;
+    min-width: 100%;
 }
-
+.hljs-dark .hljs::before{
+	position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #c2c0bc;
+    background-color: #f1ede4;
+    content: "Code";
+}
 .hljs-dark .hljs,
 .hljs-dark .hljs-tag,
 .hljs-dark .css .hljs-rules,
 .hljs-dark .css .hljs-value,
 .hljs-dark .css .hljs-function .hljs-preprocessor,
 .hljs-dark .hljs-pragma {
-	color: #f8f8f2
+    color: #637c84
 }
 
 .hljs-dark .hljs-strongemphasis,
 .hljs-dark .hljs-strong,
 .hljs-dark .hljs-emphasis {
-	color: #a8a8a2
+    color: #a8a8a2
 }
 
 .hljs-dark .hljs-bullet,
@@ -388,7 +259,7 @@ ol ol {
 .hljs-dark .alias .hljs-keyword,
 .hljs-dark .hljs-literal,
 .hljs-dark .hljs-hexcolor {
-	color: #ae81ff
+    color: #ae81ff
 }
 
 .hljs-dark .hljs-tag .hljs-value,
@@ -396,22 +267,22 @@ ol ol {
 .hljs-dark .hljs-title,
 .hljs-dark .css .hljs-class,
 .hljs-dark .hljs-class .hljs-title:last-child {
-	color: #a6e22e
+    color: #a6e22e
 }
 
 .hljs-dark .hljs-link_url {
-	font-size: 80%
+    font-size: 80%
 }
 
 .hljs-dark .hljs-strong,
 .hljs-dark .hljs-strongemphasis {
-	font-weight: bold
+    font-weight: bold
 }
 
 .hljs-dark .hljs-emphasis,
 .hljs-dark .hljs-strongemphasis,
 .hljs-dark .hljs-class .hljs-title:last-child {
-	font-style: italic
+    font-style: italic
 }
 
 .hljs-dark .hljs-keyword,
@@ -433,20 +304,20 @@ ol ol {
 .hljs-dark .css .hljs-tag,
 .hljs-dark .css .unit,
 .hljs-dark .css .hljs-important {
-	color: #f92672
+    color: #f92672
 }
 
 .hljs-dark .hljs-function .hljs-keyword,
 .hljs-dark .hljs-class .hljs-keyword:first-child,
 .hljs-dark .hljs-constant,
 .hljs-dark .css .hljs-attribute {
-	color: #66d9ef
+    color: #66d9ef
 }
 
 .hljs-dark .hljs-variable,
 .hljs-dark .hljs-params,
 .hljs-dark .hljs-class .hljs-title {
-	color: #f8f8f2
+    color: #637c84
 }
 
 .hljs-dark .hljs-string,
@@ -473,7 +344,7 @@ ol ol {
 .hljs-dark .hljs-prompt,
 .hljs-dark .hljs-link_label,
 .hljs-dark .hljs-link_url {
-	color: #e6db74
+    color: #36958e
 }
 
 .hljs-dark .hljs-comment,
@@ -487,7 +358,7 @@ ol ol {
 .hljs-dark .hljs-shebang,
 .hljs-dark .apache .hljs-sqbracket,
 .hljs-dark .tex .hljs-formula {
-	color: #75715e
+    color: #75715e
 }
 
 .hljs-dark .coffeescript .javascript,
@@ -499,12 +370,11 @@ ol ol {
 .hljs-dark .xml .hljs-cdata,
 .hljs-dark .xml .php,
 .hljs-dark .php .xml {
-	opacity: .5
+    opacity: .5
 }
 
 code {
-	color: #c7254e;
-	background-color: #f9f2f4;
-	border-radius: 4px
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px
 }
-
