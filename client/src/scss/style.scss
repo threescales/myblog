@@ -3,7 +3,7 @@ $init-color:#333;
 $qianwight:#efefef;
 $a-color:#333;
 $article-title:#333;
-$border:1px solid #555;
+$border:1px dotted #977;
 $white:#fff;
 $placeholder-color:#000;
 $center-width:900px;
@@ -55,7 +55,7 @@ body {
     padding: 0 20px;
     margin: 0 auto;
     @media(max-width: $phone-width) {
-        padding: 0px;
+        padding: 0 10px;
     }
 }
 
@@ -201,6 +201,7 @@ a {
     height: 64px;
     padding-top: 20px;
     z-index: 10;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, .2);
     .center {
         max-width: $center-width;
         margin: 0 auto;
@@ -251,12 +252,13 @@ a {
 
 .mod-archive {
     @include fadeIn(1s);
-    margin-top: 84px;
+    margin-top: 100px;
     padding: 60px;
     background: rgba(255, 255, 255, 0.7);
-    @media screen and(max-width: 475px) {
-        padding:10px;
-        margin-top:64px;
+    @media screen and(max-width: $phone-width) {
+        padding:0px;
+        background: none;
+        border-bottom: $border;
     }
 }
 
@@ -424,6 +426,9 @@ a {
         background-color: rgba(75, 145, 80, 0.05);
         border-left: 4px solid #C15757;
         font-size: 16px;
+        @media (max-width: 475px) {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
         p {
             margin: 0;
         }
@@ -536,12 +541,85 @@ a {
 
 .comment-respond {
     @include fadeIn(3s);
-    p {
-        margin: 8px 0px;
-    }
-    h3 {
-        color: #fff;
-        text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    width: 100%;
+    position: relative;
+    margin: 65px auto 65px;
+    background-color: #fff; // background-image: url(http://v5.res.dandyweng.com/images/patterns/envelope-border.png), url(http://v5.res.dandyweng.com/images/patterns/light_wool.webp);
+    // background-size: 180px, 190px 191px;
+    border-radius: 5px;
+    box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.15), 0px 20px 80px 0 rgba(0, 0, 0, 0.2);
+    .comment-form {
+        background-image: url(http://v5.res.dandyweng.com/images/patterns/light_wool.webp);
+        background-size: 190px 191px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 1em;
+        p {
+            margin: 8px 0px;
+        }
+        h3 {
+            color: #666;
+        }
+        a {
+            color: #666;
+        }
+        .half {
+            float: left;
+            width: 45%;
+            margin-bottom: 40px;
+            input {
+                display: block;
+                width: 100%;
+                padding: .5em;
+                font-size: 20px;
+                background-color: #fff;
+                background-color: rgba(255, 255, 255, 0.5);
+                color: #666;
+                color: rgba(0, 0, 0, 0.6);
+                border: solid 2px #dbbfc3;
+                border-radius: .5em;
+                outline: 0;
+                -webkit-appearance: none;
+            }
+        }
+        .right-half {
+            float: right;
+        }
+        textarea {
+            display: block;
+            width: 100%;
+            padding: .5em;
+            font-size: 20px;
+            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #666;
+            color: rgba(0, 0, 0, 0.6);
+            border: solid 2px #dbbfc3;
+            border-radius: .5em;
+            outline: 0;
+            margin-bottom: 40px;
+        }
+        button {
+            position: relative;
+            background-color: #a55f67;
+            border: 0;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            height: 3.5em;
+            font-size: 16px;
+            line-height: 3.5em;
+            outline: 0;
+            padding: 0 5em 0 5em;
+            margin-bottom: 2em !important;
+            box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+            text-align: center;
+            text-decoration: none;
+            -webkit-appearance: none;
+        }
     }
 }
 
@@ -576,113 +654,6 @@ $color2) {
 
 
 /**评论**/
-
-.comment-form {
-    margin-bottom: 30px;
-    width: 100%;
-    height: 353px;
-    padding: 30px;
-    border: 1px solid rgba(0, 0, 0, .2);
-    @include radius(5px);
-    @include clip();
-    background: rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 13px 3px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 0 0 13px 3px rgba(0, 0, 0, .5);
-    box-shadow: 0 0 13px 3px rgba(0, 0, 0, .5);
-    overflow: hidden;
-    textarea {
-        background: rgba(255, 255, 255, 0.4) no-repeat scroll 16px 16px;
-        width: 100%;
-        height: 110px;
-        border: 1px solid rgba(255, 255, 255, .6);
-        @include radius(4px);
-        @include clip();
-        display: block;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 18px;
-        color: $white;
-        padding: 0 20px;
-        margin-bottom: 20px;
-        overflow: hidden;
-    }
-    ;
-    input {
-        width: 100%;
-        height: 48px;
-        border: 1px solid rgba(255, 255, 255, .4);
-        @include radius(4px);
-        @include clip();
-        background-color: #6f7070;
-        display: block;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 18px;
-        color: $white;
-        padding: 0 20px;
-        margin-bottom: 20px;
-    }
-    ;
-    input[type=submit] {
-        cursor: pointer;
-    }
-    ;
-    input:focus,
-    textarea:focus {
-        background-color: rgba(0, 0, 0, 0.2);
-        -moz-box-shadow: 0 0 5px 1px rgba(255, 255, 255, .5);
-        -webkit-box-shadow: 0 0 5px 1px rgba(255, 255, 255, .5);
-        box-shadow: 0 0 5px 1px rgba(255, 255, 255, .5);
-        overflow: hidden;
-    }
-    ;
-    .btn {
-        width: 138px;
-        height: 44px;
-        float: right;
-        border: 1px solid #253737;
-        padding: 10.5px 21px;
-        @include radius(6px);
-        @include shadow();
-        @include comment-background(#6da5a3,
-        #416b68);
-        text-shadow: #333333 0 1px 0;
-        color: #e1e1e1;
-    }
-    ;
-    .btn:hover {
-        border: 1px solid #253737;
-        text-shadow: #333333 0 1px 0;
-        @include comment-background(#77b2b0,
-        #416b68);
-        color: $white;
-    }
-    ;
-    .btn:active {
-        margin-top: 1px;
-        text-shadow: #333333 0 -1px 0;
-        border: 1px solid #253737;
-        @include comment-background(#416b68,
-        #6da5a3);
-        color: $white;
-        @include shadow();
-    }
-    ;
-}
-
-::-webkit-input-placeholder {
-    color: $white;
-}
-
-:-moz-placeholder {
-    color: $white;
-}
-
-::-moz-placeholder {
-    color: $white;
-}
-
-:-ms-input-placeholder {
-    color: $white;
-}
 
 
 /*动画旋转*/
