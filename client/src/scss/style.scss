@@ -372,7 +372,9 @@ a {
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 display: inline-block;
-                width: 200px;
+                @media screen and(max-width:555px){
+                    width: 200px;
+                }
             }
         }
     }
