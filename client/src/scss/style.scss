@@ -366,8 +366,13 @@ a {
             }
             a {
                 margin-left: 70px;
-                font-size: 10px;
+                font-size: 16px;
                 line-height: 30px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: inline-block;
+                width: 200px;
             }
         }
     }
@@ -437,7 +442,7 @@ a {
 
 @media(max-width:900px) {
     .mod-post__entry {
-        font-size: 13px;
+        font-size: 16px;
     }
 }
 
