@@ -278,6 +278,7 @@ a {
     li {
         line-height: 50px;
         margin-bottom: 8px;
+        list-style: none;
         span {
             margin-left: 59px;
             border-left: 1px solid #fff;
@@ -312,7 +313,7 @@ a {
     &:before {
         content: "";
         position: absolute;
-        right: -31px;
+        right: -32px;
         top: 15px;
         width: 5px;
         height: 0px;
@@ -580,7 +581,6 @@ a {
                 color: #666;
                 color: rgba(0, 0, 0, 0.6);
                 border: solid 2px #dbbfc3;
-                border-radius: .5em;
                 outline: 0;
                 -webkit-appearance: none;
             }
@@ -591,7 +591,6 @@ a {
         textarea {
             display: block;
             width: 100%;
-            padding: .5em;
             font-size: 20px;
             background-color: #fff;
             background-color: rgba(255, 255, 255, 0.5);
@@ -606,7 +605,6 @@ a {
             position: relative;
             background-color: #a55f67;
             border: 0;
-            border-radius: 8px;
             color: #fff;
             cursor: pointer;
             display: block;
